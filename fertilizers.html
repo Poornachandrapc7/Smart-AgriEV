@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Chakra+Petch&family=Poppins&family=Young+Serif&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6a50e0837f.js" crossorigin="anonymous"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Fertilizers Details | Smart AgriEV</title>
+    <style>
+        .tts-controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .tts-controls button {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            color: white;
+            margin: 5px; /* Add spacing between buttons */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .tts-controls button.play {
+            background-color: #4CAF50; /* Green */
+        }
+
+        .tts-controls button.play:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .tts-controls button.pause {
+            background-color: #FF9800; /* Orange */
+        }
+
+        .tts-controls button.pause:hover {
+            background-color: #fb8c00; /* Darker orange on hover */
+        }
+
+        .tts-controls button.resume {
+            background-color: #2196F3; /* Blue */
+        }
+
+        .tts-controls button.resume:hover {
+            background-color: #1976D2; /* Darker blue on hover */
+        }
+
+        .tts-controls button.stop {
+            background-color: #F44336; /* Red */
+        }
+
+        .tts-controls button.stop:hover {
+            background-color: #d32f2f; /* Darker red on hover */
+        }
+        /* Style for Listen in Kannada button */
+        .listen-btn {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px; /* Add spacing between buttons */
+            margin-bottom: 10px; /* Add vertical spacing */
+        }
+
+        .listen-btn:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        /* Style for Pause button */
+        .pause-btn {
+            background-color: #FF9800; /* Orange */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px; /* Add spacing between buttons */
+            margin-bottom: 10px; /* Add vertical spacing */
+        }
+
+        .pause-btn:hover {
+            background-color: #fb8c00; /* Darker orange on hover */
+        }
+
+        /* Style for Resume button */
+        .resume-btn {
+            background-color: #2196F3; /* Blue */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px; /* Add spacing between buttons */
+            margin-bottom: 10px; /* Add vertical spacing */
+        }
+
+        .resume-btn:hover {
+            background-color: #1976D2; /* Darker blue on hover */
+        }
+
+        /* Style for Stop button */
+        .stop-btn {
+            background-color: #F44336; /* Red */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px; /* Add vertical spacing */
+        }
+
+        .stop-btn:hover {
+            background-color: #d32f2f; /* Darker red on hover */
+        }
+        .tts-controls-hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h3>Smart <span>AgriEV</span></h3>
+            </div>
+            <ul class="menu" id="site-menu">
+                <li class="nav-links" style="--1:1">
+                    <a class="linkk" href="index.html" data-translate="home">HOME</a>
+                </li>
+                <li class="nav-links" style="--1:3">
+                    <a class="linkk" href="contact.html" data-translate="contact">Contact</a>
+                </li>
+                <li class="nav-links" style="--1: 3">
+                    <a
+                      class="linkk"
+                      href="soildetails.html"
+                      class="soil-link"
+                      data-translate="soilDetails"
+                      >Soil Details</a
+                    >
+                  </li>
+                  <li class="nav-links" style="--1:4">
+                    <a class="linkk" href="Governmentwebsites.html" data-translate="webDetails">Government Websites</a>
+                </li>
+                <li class="nav-links language-toggle">
+                    <button class="language-toggle-btn" onclick="toggleLanguage()" id="languageToggle" data-translate="languageToggle">ಕನ್ನಡ</button>
+                </li>
+            </ul>
+            <i class="fa-solid fa-bars togg" onclick="openmenu()"></i>
+            <i class="fa-regular fa-circle-xmark" onclick="closemenu()"></i>
+        </nav>
+    </header>
+    <section class="soil-details-section">
+        <div class="soil-details-container">
+            <h2 class="soil-details-title" data-translate="fertiDetails" style="text-align: center; font-size: 24px; font-weight: bold; color: #27ae60; margin-bottom: 20px;">Fertilizers Details</h2>
+
+            <div class="soil-image-container">
+                <img src="ferti1.jpg" alt="Soil Image" class="soil-image">
+            </div>
+            <div class="tts-controls" id="tts-controls">
+                <button class="voice-btn play" onclick="startReading()">🔊 Play</button>
+                <button class="voice-btn pause" onclick="pauseReading()">⏸️ Pause</button>
+                <button class="voice-btn resume" onclick="resumeReading()">▶️ Resume</button>
+                <button class="voice-btn stop" onclick="stopReading()">⏹️ Stop</button>
+            </div>
+            <div class="soil-info" data-translate="soilInfo">
+                <p><strong class="soil-name">Urea :</strong> Urea is the most commonly used nitrogen-based fertilizer in India. It contains 46% nitrogen, making it highly effective in promoting vegetative growth and overall plant strength. Urea is affordable and widely used for a variety of crops, especially cereals like wheat and rice.</p>
+                <p><strong class="soil-name">NPK fertilizers :</strong> NPK fertilizers are complex fertilizers containing varying amounts of nitrogen, phosphorus, and potassium. They are tailored to meet the specific nutrient requirements of crops and are widely used in rice, wheat, cotton, and vegetables.</p>
+                <p><strong class="soil-name">NP and PK fertilizers :</strong> NP and PK fertilizers contain nitrogen and phosphorus (NP) or phosphorus and potassium (PK). These fertilizers are ideal for crops that require only two of the three essential nutrients and are used for more targeted fertilization.</p>
+                <p><strong class="soil-name">Ammonium Sulfate :</strong> Ammonium Sulfate contains 21% nitrogen and 24% sulfur. It is used for crops like oilseeds and pulses that need both sulfur and nitrogen. It also helps to reduce the pH level of alkaline soils, making it ideal for basic soils.</p>
+                <p><strong class="soil-name">Calcium Ammonium Nitrate (CAN) :</strong> CAN is a top-dressing fertilizer containing 26% nitrogen. It provides quick-release nitrogen, making it suitable for crops needing a short-term boost. It helps in improving plant health and is typically applied to crops like vegetables and potatoes.</p>
+                <p><strong class="soil-name">Single Super Phosphate (SSP) :</strong> SSP is primarily composed of calcium and sulfur and contains 16-20% phosphorus. It is widely used for crops like oilseeds, lentils, and legumes. It promotes strong root development and improves the overall health of the plant.</p>
+                <p><strong class="soil-name">Diammonium Phosphate (DAP) :</strong> DAP is a widely used phosphorus fertilizer containing 46% phosphorus and 18% nitrogen. It is most effective during planting as it ensures strong early growth and development of the plant, especially for crops like wheat and maize.</p>
+                <p><strong class="soil-name">Muriate of Potash (MOP) :</strong> MOP is a potassium fertilizer containing 60-62% potassium. It is commonly used for a variety of crops, including cereals, vegetables, and fruits. It helps in improving disease resistance, water regulation, and overall plant health.</p>
+                <p><strong class="soil-name">Potassium Sulfate (SOP) :</strong> SOP contains 18% sulfur and 50% potassium. It is used in crops sensitive to chloride, such as potatoes, tobacco, and some fruits. It is also effective in controlling chloride levels in saline soils.</p>
+        </div>
+    </section>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 Smart AgriEV. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Define translations for English and Kannada
+        const translations = {
+            en: {
+                home: "HOME",
+                contact: "Contact",
+                weather: "Weather",
+                languageToggle: "ಕನ್ನಡ",
+                soilDetails: "Soil Details",
+                fertiDetails: "Fertilizers Details",
+                webDetails: "Government websites",
+                soilInfo: `
+                <p><strong class="soil-name">Urea :</strong> Urea is the most commonly used nitrogen-based fertilizer in India. It contains 46% nitrogen, making it highly effective in promoting vegetative growth and overall plant strength. Urea is affordable and widely used for a variety of crops, especially cereals like wheat and rice.</p>
+                <p><strong class="soil-name">NPK fertilizers :</strong> NPK fertilizers are complex fertilizers containing varying amounts of nitrogen, phosphorus, and potassium. They are tailored to meet the specific nutrient requirements of crops and are widely used in rice, wheat, cotton, and vegetables.</p>
+                <p><strong class="soil-name">NP and PK fertilizers :</strong> NP and PK fertilizers contain nitrogen and phosphorus (NP) or phosphorus and potassium (PK). These fertilizers are ideal for crops that require only two of the three essential nutrients and are used for more targeted fertilization.</p>
+                <p><strong class="soil-name">Ammonium Sulfate :</strong> Ammonium Sulfate contains 21% nitrogen and 24% sulfur. It is used for crops like oilseeds and pulses that need both sulfur and nitrogen. It also helps to reduce the pH level of alkaline soils, making it ideal for basic soils.</p>
+                <p><strong class="soil-name">Calcium Ammonium Nitrate (CAN) :</strong> CAN is a top-dressing fertilizer containing 26% nitrogen. It provides quick-release nitrogen, making it suitable for crops needing a short-term boost. It helps in improving plant health and is typically applied to crops like vegetables and potatoes.</p>
+                <p><strong class="soil-name">Single Super Phosphate (SSP) :</strong> SSP is primarily composed of calcium and sulfur and contains 16-20% phosphorus. It is widely used for crops like oilseeds, lentils, and legumes. It promotes strong root development and improves the overall health of the plant.</p>
+                <p><strong class="soil-name">Diammonium Phosphate (DAP) :</strong> DAP is a widely used phosphorus fertilizer containing 46% phosphorus and 18% nitrogen. It is most effective during planting as it ensures strong early growth and development of the plant, especially for crops like wheat and maize.</p>
+                <p><strong class="soil-name">Muriate of Potash (MOP) :</strong> MOP is a potassium fertilizer containing 60-62% potassium. It is commonly used for a variety of crops, including cereals, vegetables, and fruits. It helps in improving disease resistance, water regulation, and overall plant health.</p>
+                <p><strong class="soil-name">Potassium Sulfate (SOP) :</strong> SOP contains 18% sulfur and 50% potassium. It is used in crops sensitive to chloride, such as potatoes, tobacco, and some fruits. It is also effective in controlling chloride levels in saline soils.</p>
+                `
+            },
+            kn: {
+                home: "ಮುಖಪುಟ",
+                contact: "ಸಂಪರ್ಕಿಸಿ",
+                weather: "ಹವಾಮಾನ",
+                languageToggle: "English",
+                soilDetails: "ಮಣ್ಣಿನ ವಿವರಗಳು",
+                fertiDetails: "ರಸಗೊಬ್ಬರಗಳ ವಿವರಗಳು",
+                webDetails: "ಸರ್ಕಾರಿ ವೆಬ್ ಸೈಟ್ ಗಳು",
+                soilInfo: `
+                <p><strong class="soil-name">ಯೂರಿಯಾ :</strong> ಯೂರಿಯಾ ಭಾರತದಲ್ಲಿ ಅತ್ಯಂತ ವ್ಯಾಪಕವಾಗಿ ಬಳಸಲಾಗುವ ನೈಟ್ರೋಜನ್ ಆಧಾರಿತ ರಾಸಾಯನಿಕ ಹೂಗುಂಟು. ಇದು 46% ನೈಟ್ರೋಜನ್ ಹೊಂದಿದೆ, ಇದು ಸಸ್ಯರಜವಾಗಿ ಬೆಳವಣಿಗೆ ಮತ್ತು ಸಸ್ಯದ ಒಟ್ಟು ಶಕ್ತಿಗೆ ಬಹುಮಾನವಾಗಿದೆ. ಯೂರಿಯಾ ಕಿಸ್ತ ಮತ್ತು ಅಕ್ಕಿ ಮುಂತಾದ ಬೆಳೆಗಳಿಗೆ ಅತ್ಯಂತ ಪರಿಣಾಮಕಾರಿಯಾಗಿದ್ದು, ಇದು ದುಬಾರಿ ಅಲ್ಲದೆ ವ್ಯಾಪಕವಾಗಿ ಬಳಸಲಾಗುತ್ತದೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio1')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio1')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio1')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio1')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio1" src="/urea.mp3"></audio>
+
+                <p><strong class="soil-name">ಎನ್‌ಪಕೆ ರಸಗೊಬ್ಬರ:</strong> ಎನ್‌ಪಕೆ ರಸಗೊಬ್ಬರ ನೈಟ್ರೋಜನ್, ಫೋಸ್ಫರಸ್ ಮತ್ತು ಪೊಟಾಶಿಯಂ ಇವುಗಳನ್ನು ವಿವಿಧ ಪ್ರಮಾಣಗಳಲ್ಲಿ ಹೊಂದಿರುವ ಸಂಕೀರ್ಣ ರಾಸಾಯನಿಕ ಹೂಗುಂಟುಗಳು. ಇವು ಬೆಳೆಗಳಿಗೆ ನಿರ್ದಿಷ್ಟ ಪೋಷಕಾಂಶ ಅಗತ್ಯಗಳನ್ನು ಪೂರೈಸಲು ರೂಪುಗೊಂಡಿವೆ ಮತ್ತು ಅಕ್ಕಿ, ಗೋಧಿ, ಹತ್ತಿ ಮತ್ತು ತರಕಾರಿಗಳಲ್ಲಿ ವ್ಯಾಪಕವಾಗಿ ಬಳಸಲಾಗುತ್ತದೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio2')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio2')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio2')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio2')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio2" src="/npk_fertilizer.mp3"></audio>
+
+                <p><strong class="soil-name">ಎನ್‌ಪಿ ಮತ್ತು ಪಿಕೆ ರಸಗೊಬ್ಬರ :</strong> ಎನ್‌ಪಿ ಮತ್ತು ಪಿಕೆ ರಸಗೊಬ್ಬರ ನೈಟ್ರೋಜನ್ ಮತ್ತು ಫೋಸ್ಫರಸ್ (NP) ಅಥವಾ ಫೋಸ್ಫರಸ್ ಮತ್ತು ಪೊಟಾಶಿಯಂ (PK) ಹೊಂದಿವೆ. ಈ ಹೂಗುಂಟುಗಳು ಮೂವರು ಪ್ರಮುಖ ಪೋಷಕಾಂಶಗಳಲ್ಲಿ ಕೇವಲ ಎರಡು ಪೋಷಕಾಂಶಗಳನ್ನು ಅಗತ್ಯವಿರುವ ಬೆಳೆಗಳಿಗೆ ಸೂಕ್ತವಾಗಿವೆ ಮತ್ತು ಹೆಚ್ಚಿನ ಗುರಿ ಇರುವ ಹೂಗುಂಟುಗಳನ್ನು ಹಾಕಲು ಉಪಯುಕ್ತವಾಗಿವೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio3')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio3')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio3')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio3')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio3" src="/np_pk_fertilizer.mp3"></audio>
+
+                <p><strong class="soil-name">ಅಮೋನಿಯಂ ಸಲ್ಫೇಟ್ :</strong> ಅಮೋನಿಯಂ ಸಲ್ಫೇಟ್‌ನಲ್ಲಿ 21% ನೈಟ್ರೋಜನ್ ಮತ್ತು 24% ಗಂಧಕವಿದೆ. ಇದನ್ನು ಎಣ್ಣೆ ಬೀಜಗಳು ಮತ್ತು ಪಪ್ಪಾಯಿ ಹತ್ತಿ ಮುಂತಾದ ಬೆಳೆಗಳಿಗೆ ಬಳಸಲಾಗುತ್ತದೆ, ಅವುಗಳಿಗೆ ನೈಟ್ರೋಜನ್ ಮತ್ತು ಗಂಧಕ ಎರಡೂ ಅಗತ್ಯವಿದೆ. ಇದರಿಂದ ಆಲ್ಕಲೈನ್ ಮಣ್ಣಿನ ಪಿಎಚ್ ಮಟ್ಟವನ್ನು ಕಡಿಮೆ ಮಾಡಬಹುದು, ಹಾಗಾಗಿ ಇದು ಸಾಂದ್ರ ಬಣ್ಣಗಳನ್ನು ಹೊಂದಿರುವ ಮಣ್ಣಿಗೆ ಸೂಕ್ತವಾಗಿದೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio4')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio4')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio4')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio4')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio4" src="/ammonium_sulfate.mp3"></audio>
+
+                <p><strong class="soil-name">ಕ್ಯಾಲ್ಸಿಯಂ ಅಮೋನಿಯಂ ನೈಟ್ರೇಟ್ (CAN) :</strong> ಕ್ಯಾಲ್ಸಿಯಂ ಅಮೋನಿಯಂ ನೈಟ್ರೇಟ್ (CAN) 26% ನೈಟ್ರೋಜನ್ ಹೊಂದಿರುವ ಟಾಪ್ ಡ್ರಸ್ಸಿಂಗ್ ರಾಸಾಯನಿಕ ಹೂಗುಂಟು. ಇದು ತ್ವರಿತ ನೈಟ್ರೋಜನ್ ಬಿಡುಗಡೆ ಮಾಡುತ್ತದೆ, ಹೀಗಾಗಿ ತಾತ್ಕಾಲಿಕ ಉತ್ಕರ್ಷಣೆಗೆ ಅಗತ್ಯವಿರುವ ಬೆಳೆಗಳಿಗೆ ಸೂಕ್ತವಾಗಿದೆ. ಇದು ಸಸ್ಯ ಆರೋಗ್ಯವನ್ನು ಸುಧಾರಿಸಲು ಸಹಾಯಕವಾಗಿದೆ ಮತ್ತು ಸಾಮಾನ್ಯವಾಗಿ ತರಕಾರಿ ಮತ್ತು ಆಲೂಗೋಮನುಹಣ್ಣುಗಳಿಗೆ ಅನ್ವಯಿಸಲಾಗುತ್ತದೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio5')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio5')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio5')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio5')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio5" src="/calcium_ammonium_nitrate.mp3.m4a"></audio>
+
+                <p><strong class="soil-name">ಸಿಂಗಲ್ ಸೂಪರ್ ಫೋಸ್ಫೇಟ್ (SSP) :</strong> ಸಿಂಗಲ್ ಸೂಪರ್ ಫೋಸ್ಫೇಟ್ (SSP) ಮುಖ್ಯವಾಗಿ ಕ್ಯಾಸಿಯಮ್ ಮತ್ತು ಗಂಧಕದಿಂದ ಕೂಡಿದೆ ಮತ್ತು 16–20% ಫೋಸ್ಫರಸ್ ಹೊಂದಿದೆ. ಇದು ಎಣ್ಣೆ ಬೀಜಗಳು, ಪೂರಿತಗಳು ಮತ್ತು ಹಣ್ಣುಗಳು ಸೇರಿ ಬೆಳೆಗಳಿಗೆ ವ್ಯಾಪಕವಾಗಿ ಬಳಸಲಾಗುತ್ತದೆ. ಇದು ಬಲವಾದ ಮೋಲೆ ಬೆಳವಣಿಗೆಗೆ ಉತ್ತೇಜನ ನೀಡುತ್ತದೆ ಮತ್ತು ಸಸ್ಯದ ಒಟ್ಟು ಆರೋಗ್ಯವನ್ನು ಸುಧಾರಿಸುತ್ತದೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio6')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio6')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio6')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio6')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio6" src="/ssp.mp3.m4a"></audio>
+
+                <p><strong class="soil-name">ಡೈಅಮೋನಿಯಂ ಫೋಸ್ಫೇಟ್ (DAP) :</strong> ಡೈಅಮೋನಿಯಂ ಫೋಸ್ಫೇಟ್ (DAP) 46% ಫೋಸ್ಫರಸ್ ಮತ್ತು 18% ನೈಟ್ರೋಜನ್ ಹೊಂದಿರುವ ರಾಸಾಯನಿಕ ಹೂಗುಂಟು. ಇದು ಬೆಳೆಗಳ ಬೆಳವಣಿಗೆ ಆರಂಭದಲ್ಲಿ ಬಹುಮಾನವಾಗಿದೆ, ವಿಶೇಷವಾಗಿ ಗೋಧಿ ಮತ್ತು ಮೆಕ್ಕೆಜೋಳಂತಹ ಬೆಳೆಗಳಿಗೆ ಶಕ್ತಿಯುತ ಬೆಳವಣಿಗೆ ಹಾಗೂ ಬೆಳೆಗಳ ಆರಂಭಿಕ ಬೆಳವಣಿಗೆಗಾಗಿ ಅನ್ವಯವಾಗುತ್ತದೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio7')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio7')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio7')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio7')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio7" src="/dap.mp3.m4a"></audio>
+
+                <p><strong class="soil-name">ಮ್ಯೂರಿಯೇಟ್ ಆಫ್ ಪೊಟಾಶ್ (MOP) :</strong> ಮ್ಯೂರಿಯೇಟ್ ಆಫ್ ಪೊಟಾಶ್ (MOP) 60-62% ಪೊಟಾಶಿಯಂ ಹೊಂದಿರುವ ಪೋಟ್ಯಾಷಿಯಂ ಆಧಾರಿತ ಹೂಗುಂಟು. ಇದು ಅಕ್ಕಿ, ತರಕಾರಿ ಮತ್ತು ಹಣ್ಣುಗಳಂತಹ ಹಲವಾರು ಬೆಳೆಗಳಿಗೆ ಸಾಮಾನ್ಯವಾಗಿ ಬಳಸಲಾಗುತ್ತದೆ. ಇದು ರೋಗ ನಿರೋಧಕತೆ, ನೀರಿನ ನಿಯಂತ್ರಣ ಮತ್ತು ಸಸ್ಯದ ಒಟ್ಟು ಆರೋಗ್ಯವನ್ನು ಸುಧಾರಿಸಲು ಸಹಾಯಮಾಡುತ್ತದೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio8')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio8')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio8')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio8')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio8" src="/mop.mp3.m4a"></audio>
+
+                <p><strong class="soil-name">ಪೋಟ್ಯಾಸಿಯಂ ಸಲ್ಫೇಟ್ (SOP) :</strong> ಪೋಟ್ಯಾಸಿಯಂ ಸಲ್ಫೇಟ್ (SOP) 18% ಗಂಧಕ ಮತ್ತು 50% ಪೊಟಾಶಿಯಂ ಹೊಂದಿದೆ. ಇದನ್ನು ಕ್ಲೋರೈಡ್‌ಗೆ ಸಂವೇದನಶೀಲವಾದ ಬೆಳೆಗಳು, ಜೋಳ, ತಂಬಾಕು ಮತ್ತು ಕೆಲವು ಹಣ್ಣುಗಳಿಗೆ ಬಳಸಲಾಗುತ್ತದೆ. ಇದು ಹೆಚ್ಚಿದ ನೀರಿನ ಉಪ್ಪು ಮಟ್ಟವನ್ನು ನಿಯಂತ್ರಿಸಲು ಸಹಾಯಮಾಡುತ್ತದೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio9')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio9')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio9')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio9')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio9" src="/sop.mp3.m4a"></audio>
+                `
+            }
+        };
+
+        // Toggle language function
+        function toggleLanguage() {
+        const lang = document.getElementById("languageToggle").innerText === "ಕನ್ನಡ" ? "kn" : "en";
+
+        document.querySelectorAll("[data-translate]").forEach((el) => {
+            const key = el.getAttribute("data-translate");
+            if (key === "soilInfo") {
+                el.innerHTML = translations[lang][key];
+            } else {
+                el.innerText = translations[lang][key];
+            }
+        });
+
+        // Hide or show the TTS buttons based on language
+        const ttsControls = document.getElementById("tts-controls");
+        if (lang === "kn") {
+            ttsControls.classList.add("tts-controls-hidden");
+        } else {
+            ttsControls.classList.remove("tts-controls-hidden");
+        }
+    }
+        // Initialize speech variable globally only once
+        var speech = speech || new SpeechSynthesisUtterance();
+        let isPaused = false;
+        let voices = [];
+
+        // Load voices and log them to console
+        window.speechSynthesis.onvoiceschanged = function() {
+            voices = window.speechSynthesis.getVoices();
+            console.log(voices);  // Log available voices to see if Kannada is available
+        };
+        // Start reading function
+        function startReading() {
+            const language = document.getElementById("languageToggle").innerText === "ಕನ್ನಡ" ? "kn-IN" : "en-IN";
+            const soilInfoElement = document.querySelector(".soil-info");
+            const soilText = soilInfoElement.innerText;
+
+            speech.text = soilText;
+            speech.lang = language;
+            speech.rate = 1;
+            speech.pitch = 1;
+            isPaused = false;
+
+            // Stop any existing speech before starting a new one
+            window.speechSynthesis.cancel();
+
+            // Check if Kannada voice is available, otherwise fallback to English
+            const selectedVoice = voices.find(voice => voice.lang === 'kn-IN') || voices.find(voice => voice.lang === 'en-IN');
+            speech.voice = selectedVoice;
+
+            window.speechSynthesis.speak(speech);
+        }
+
+        // Pause reading function
+        function pauseReading() {
+            if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+                isPaused = true;
+                window.speechSynthesis.pause();
+            }
+        }
+
+        // Resume reading function
+        function resumeReading() {
+            if (isPaused) {
+                window.speechSynthesis.resume();
+            }
+        }
+
+        // Stop reading function
+        function stopReading() {
+            window.speechSynthesis.cancel();
+        }
+        function playAudio(id) {
+    document.getElementById(id).play();
+  }
+
+  function pauseAudio(id) {
+    document.getElementById(id).pause();
+  }
+
+  function resumeAudio(id) {
+    document.getElementById(id).play();
+  }
+
+  function stopAudio(id) {
+    const audio = document.getElementById(id);
+    audio.pause();
+    audio.currentTime = 0;
+  }
+    </script>
+</body>
+</html>

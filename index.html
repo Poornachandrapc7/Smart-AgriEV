@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Audiowide&family=Chakra+Petch&family=Poppins&family=Young+Serif&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/6a50e0837f.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>Smart AgriEV</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <div class="logo">
+          <h3>Smart <span>AgriEV</span></h3>
+        </div>
+        <ul class="menu" id="site-menu">
+          <li class="nav-links" style="--1: 1">
+            <a
+              class="linkk"
+              href="#home"
+              class="home-link"
+              data-translate="home"
+              >HOME</a
+            >
+          </li>
+          <li class="nav-links" style="--1: 2">
+            <a class="linkk" href="contact.html" data-translate="contact"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-links" style="--1: 3">
+            <a
+              class="linkk"
+              href="#weather"
+              class="weather-link"
+              data-translate="weather"
+              >Weather</a
+            >
+          </li>
+          <li class="nav-links" style="--1: 4">
+            <a
+              class="linkk soil-link"
+              href="soildetails.html"
+              data-translate="soilDetails"
+            >Soil Details</a>
+          </li>
+          <li class="nav-links" style="--1: 4">
+            <a
+              class="linkk soil-link"
+              href="fertilizers.html"
+              data-translate="fertiDetails"
+            >Fertilizers Details</a>
+          </li>
+          
+          <li class="nav-links language-toggle">
+            <button class="language-toggle-btn" onclick="toggleLanguage()" id="languageToggle">ಕನ್ನಡ</button>
+          </li>
+          <i class="fa-regular fa-circle-xmark" onclick="closemenu()"></i>
+        </ul>
+        <i class="fa-solid fa-bars togg" onclick="openmenu()"></i>
+      </nav>
+    </header>
+
+    <!-- Battery Monitoring Part -->
+    <section id="home" class="home">
+      <div class="home-container">
+        <div class="battery">
+          <h2 class="battery-title" data-translate="batteryTitle">
+            Real-Time Battery Monitoring
+          </h2>
+          <div class="dashboard">
+            <div class="card">
+              <h2 data-translate="batteryStatus">Battery Status</h2>
+              <div class="bar-container">
+                <div class="bar" id="batteryStatusBar"></div>
+              </div>
+              <p id="batteryStatus">Loading...</p>
+            </div>
+            <div class="card">
+              <h2 data-translate="voltage">Voltage</h2>
+              <div class="bar-container">
+                <div class="bar" id="voltageBar"></div>
+              </div>
+              <p id="voltage">Loading...</p>
+            </div>
+            <div class="card">
+              <h2 data-translate="current">Current</h2>
+              <div class="bar-container">
+                <div class="bar" id="currentBar"></div>
+              </div>
+              <p id="current">Loading...</p>
+            </div>
+            <div class="card">
+              <h2 data-translate="temperature">Temperature</h2>
+              <div class="bar-container">
+                <div class="bar" id="temperatureBar"></div>
+              </div>
+              <p id="temperature">Loading...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Precautions Section -->
+    <section id="precautions" class="precautions">
+      <div class="precautions-container">
+        <h2 class="precautions-title" data-translate="precautionsTitle">
+          Battery Care Guidelines
+        </h2>
+
+        <!-- Healthy Battery Section -->
+        <div id="healthyPrecautions" style="display: none">
+          <h3 data-translate="healthyBatteryStatus">
+            Healthy Battery Status ✅
+          </h3>
+          <ul>
+            <li>
+              <span class="bold-subheading" data-translate="stableVoltage"
+                >Stable Voltage:</span
+              >
+              <p data-translate="stableVoltageDescription">
+                The battery maintains a stable voltage range of 13.5V – 13.8V in
+                standby mode and 14.4V – 15.0V in cycle mode.
+              </p>
+            </li>
+            <li>
+              <span
+                class="bold-subheading"
+                data-translate="minimalSelfDischarge"
+                >Minimal Self-Discharge:</span
+              >
+              <p data-translate="minimalSelfDischargeDescription">
+                The battery holds a charge for weeks/months when not in use.
+              </p>
+            </li>
+            <li>
+              <span class="bold-subheading" data-translate="lowHeat"
+                >Low Heat:</span
+              >
+              <p data-translate="lowHeatDescription">
+                The battery remains cool during usage and charging.
+              </p>
+            </li>
+            <li>
+              <span class="bold-subheading" data-translate="cleanTerminals"
+                >Clean Terminals:</span
+              >
+              <p data-translate="cleanTerminalsDescription">
+                Terminals are free from corrosion or rust.
+              </p>
+            </li>
+            <li>
+              <span class="bold-subheading" data-translate="physicalCondition"
+                >Physical Condition:</span
+              >
+              <p data-translate="physicalConditionDescription">
+                No swelling, cracks, or leaks are observed in the battery
+                casing.
+              </p>
+            </li>
+            <li>
+              <span class="bold-subheading" data-translate="chargingCurrent"
+                >Charging Current:</span
+              >
+              <p data-translate="chargingCurrentDescription">
+                The battery draws below 0.39A during charging as per
+                manufacturer specifications.
+              </p>
+            </li>
+            <li>
+              <span
+                class="bold-subheading"
+                data-translate="consistentPerformance"
+                >Consistent Performance:</span
+              >
+              <p data-translate="consistentPerformanceDescription">
+                The battery provides consistent power output with no sudden
+                voltage drops.
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Needs Maintenance Section -->
+        <div id="maintenancePrecautions" style="display: none">
+          <h3 data-translate="needsMaintenanceStatus">
+            Needs Maintenance Status ⚠️
+          </h3>
+          <p data-translate="batteryNeedsMaintenanceDescription">
+            Signs that your battery needs maintenance or replacement:
+          </p>
+          <ul>
+            <li>
+              <span class="bold-subheading" data-translate="voltageDrop"
+                >Voltage Drop:</span
+              >
+              <p data-translate="voltageDropDescription">
+                Standby voltage falls below 13.5V or cycle voltage drops
+                significantly.
+              </p>
+            </li>
+            <li>
+              <span class="bold-subheading" data-translate="quickDischarge"
+                >Quick Discharge:</span
+              >
+              <p data-translate="quickDischargeDescription">
+                The battery drains unusually fast under normal usage.
+              </p>
+            </li>
+            <li>
+              <span class="bold-subheading" data-translate="excessiveHeating"
+                >Excessive Heating:</span
+              >
+              <p data-translate="excessiveHeatingDescription">
+                The battery heats up during charging or operation.
+              </p>
+            </li>
+            <li>
+              <span class="bold-subheading" data-translate="corrodedTerminals"
+                >Corroded Terminals:</span
+              >
+              <p data-translate="corrodedTerminalsDescription">
+                White powdery residue or rust appears around battery terminals.
+              </p>
+            </li>
+            <li>
+              <span class="bold-subheading" data-translate="physicalDamage"
+                >Physical Damage:</span
+              >
+              <p data-translate="physicalDamageDescription">
+                Swelling, cracks, or leaks are visible in the battery casing.
+              </p>
+            </li>
+            <li>
+              <span class="bold-subheading" data-translate="irregularCharging"
+                >Irregular Charging:</span
+              >
+              <p data-translate="irregularChargingDescription">
+                The battery takes too long to charge or stops charging
+                prematurely.
+              </p>
+            </li>
+            <li>
+              <span class="bold-subheading" data-translate="unstablePerformance"
+                >Unstable Performance:</span
+              >
+              <p data-translate="unstablePerformanceDescription">
+                The battery experiences significant voltage drops under load or
+                fluctuates in output.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Weather Monitoring Part -->
+    <section id="weather" class="weather">
+      <div class="weather-container">
+        <h2 class="weather-title" data-translate="currentWeather">
+          Current Weather
+        </h2>
+        <div class="weather-info">
+          <p>
+            <strong data-translate="temperature1">Temperature :</strong>
+            <span id="weatherTemp">Loading...</span>°C
+          </p>
+          <p>
+            <strong data-translate="humidity">Humidity :</strong>
+            <span id="weatherHumidity">Loading...</span>%
+          </p>
+          <p>
+            <strong data-translate="condition">Condition :</strong>
+            <span id="weatherCondition">Loading...</span>
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-container">
+          <p>&copy; 2024 Smart AgriEV. All rights reserved.</p>
+      </div>
+  </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const batteryStatus = document.getElementById("batteryStatus");
+        const healthyPrecautions =
+          document.getElementById("healthyPrecautions");
+        const maintenancePrecautions = document.getElementById(
+          "maintenancePrecautions"
+        );
+
+        function updatePrecautions(status) {
+          if (status === "Healthy") {
+            healthyPrecautions.style.display = "block";
+            maintenancePrecautions.style.display = "none";
+          } else if (status === "Needs Maintenance") {
+            healthyPrecautions.style.display = "none";
+            maintenancePrecautions.style.display = "block";
+          } else {
+            healthyPrecautions.style.display = "none";
+            maintenancePrecautions.style.display = "none";
+          }
+        }
+
+        // Simulate battery status update (replace with real logic)
+        setTimeout(() => {
+          const simulatedStatus = "Healthy"; // Change to "Needs Maintenance" for testing
+          batteryStatus.textContent = simulatedStatus;
+          updatePrecautions(simulatedStatus);
+        }, 1000);
+      });
+
+      function toggleLanguage() {
+        const langToggleButton = document.getElementById("languageToggle");
+        const elementsToTranslate = document.querySelectorAll(
+          ".battery-title, .precautions-title, .home-link, .weather-title, #healthyPrecautions h3, #maintenancePrecautions h3, #healthyPrecautions ul li span, #maintenancePrecautions ul li span, #healthyPrecautions ul li p, #maintenancePrecautions ul li p"
+        );
+
+        if (langToggleButton.textContent === "ಕನ್ನಡ") {
+          langToggleButton.textContent = "English";
+          translateToKannada(elementsToTranslate);
+        } else {
+          langToggleButton.textContent = "ಕನ್ನಡ";
+          translateToEnglish(elementsToTranslate);
+        }
+      }
+
+      // Function to translate content to Kannada
+      function translateToKannada() {
+        const elements = document.querySelectorAll("[data-translate]");
+
+        elements.forEach((element) => {
+          const key = element.getAttribute("data-translate");
+          switch (key) {
+            case "healthyBatteryStatus":
+              element.textContent = "ಆರೋಗ್ಯಕರ ಬ್ಯಾಟರಿ ಸ್ಥಿತಿ ✅";
+              break;
+            case "stableVoltage":
+              element.textContent = "ಸ್ಥಿರ ವೋಲ್ಟೇಜ್:";
+              break;
+            case "stableVoltageDescription":
+              element.textContent =
+                "ಬ್ಯಾಟರಿ ಸ್ಥಿರ ವೋಲ್ಟೇಜ್ ವ್ಯಾಪ್ತಿಯಲ್ಲಿ ಇದೆ: 13.5V – 13.8V ಸ್ಟ್ಯಾಂಡ್‌ಬೈ ಮೋಡ್‌ನಲ್ಲಿ ಮತ್ತು 14.4V – 15.0V ಸೈಕಲ್ ಮೋಡ್‌ನಲ್ಲಿ.";
+              break;
+            case "minimalSelfDischarge":
+              element.textContent = "ಕನಿಷ್ಠ ಸ್ವಯಂ-ವಿಮೋಚನೆ:";
+              break;
+            case "minimalSelfDischargeDescription":
+              element.textContent =
+                "ಬ್ಯಾಟರಿ ಬಳಸದೇ ಇದ್ದರೆ ವಾರಗಳು/ತಿಂಗಳುಗಳವರೆಗೆ ಚಾರ್ಜ್ ಮಾಡಲು ಹಿಡಿಯುತ್ತದೆ.";
+              break;
+            case "lowHeat":
+              element.textContent = "ಕಡಿಮೆ ತಾಪಮಾನ:";
+              break;
+            case "lowHeatDescription":
+              element.textContent =
+                "ಬ್ಯಾಟರಿ ಉಪಯೋಗ ಮತ್ತು ಚಾರ್ಜಿಂಗ್ ಸಮಯದಲ್ಲಿ ತಂಪಾಗಿರುತ್ತದೆ.";
+              break;
+            case "cleanTerminals":
+              element.textContent = "ಸ್ವಚ್ಛ ಟರ್ಮಿನಲ್ಗಳು:";
+              break;
+            case "cleanTerminalsDescription":
+              element.textContent = "ಟರ್ಮಿನಲ್‌ಗಳು ತುಕ್ಕು ಅಥವಾ  ಮಾಲಿನ್ಯದಿಂದ ಮುಕ್ತವಾಗಿವೆ.";
+              break;
+            case "physicalCondition":
+              element.textContent = "ಶಾರೀರಿಕ ಸ್ಥಿತಿ:";
+              break;
+            case "physicalConditionDescription":
+              element.textContent = "ಬ್ಯಾಟರಿ ಕೇಸಿಂಗ್‌ನಲ್ಲಿ ಯಾವುದೇ ಸ್ಫೋಟ, ಸೀರುವಿಕೆ ಅಥವಾ ಸವರಣೆಯು ಕಾಣಿಸಲಾಗುತ್ತಿಲ್ಲ.";
+              break;
+            case "chargingCurrent":
+              element.textContent = "ಚಾರ್ಜಿಂಗ್ ಶಕ್ತಿ:";
+              break;
+            case "chargingCurrentDescription":
+              element.textContent =
+                "ಬ್ಯಾಟರಿ ಚಾರ್ಜ್ ಮಾಡುವಾಗ 0.39A ನಿಗದಿತ ಅಂತರದಲ್ಲಿ ಬರುವುದಿಲ್ಲ.";
+              break;
+            case "consistentPerformance":
+              element.textContent = "ನಿರಂತರ ಕಾರ್ಯಕ್ಷಮತೆ:";
+              break;
+            case "consistentPerformanceDescription":
+              element.textContent = "ಬ್ಯಾಟರಿ ನಿರಂತರ ಶಕ್ತಿ ಉತ್ಪಾದನೆ ಹೊಂದಿದೆ.";
+              break;
+            case "home":
+              element.textContent = "ಮುಖಪುಟ";
+              break;
+            case "weather":
+              element.textContent = "ಹವಾಮಾನ";
+              break;
+            case "precautionsTitle": // Targeting the <h2> with class "precautions-title"
+              element.textContent = "ಬ್ಯಾಟರಿ ಕೇರ್ ಮಾರ್ಗದರ್ಶನ";
+              break;
+            case "batteryTitle": // Targeting the <h2> with class "battery-title"
+              element.textContent = "ರಿಯಲ್-ಟೈಮ್ ಬ್ಯಾಟರಿ ಮಾನಿಟರಿಂಗ್";
+              break;
+            case "currentWeather":
+              element.textContent = "ಪ್ರಸ್ತುತ ಹವಾಮಾನ"; // Kannada translation for "Current Weather"
+              break;
+            case "contact":
+              element.textContent = "ಸಂಪರ್ಕಿಸಿ"; // Kannada translation for "Contact"
+              break;
+            case "temperature":
+              element.textContent = "ತಾಪಮಾನ"; // Kannada translation for "Temperature"
+              break;
+              case "temperature1":
+              element.textContent = "ತಾಪಮಾನ :"; // Kannada translation for "Temperature"
+              break;
+            case "humidity":
+              element.textContent = "ಆರ್ದ್ರತೆ : "; // Kannada translation for "Humidity"
+              break;
+            case "condition":
+              element.textContent = "ಸ್ಥಿತಿ : "; // Kannada translation for "Condition"
+              break;
+            case "batteryStatus":
+              element.textContent = "ಬ್ಯಾಟರಿ ಸ್ಥಿತಿ"; // Kannada translation for "Battery Status"
+              break;
+            case "voltage":
+              element.textContent = "ವೋಲ್ಟೇಜ್"; // Kannada translation for "Voltage"
+              break;
+            case "current":
+              element.textContent = "ವಿದ್ಯುತ್ ಶಕ್ತಿ"; // Kannada translation for "Current"
+              break;
+              case "soilDetails":
+        element.textContent = "ಮಣ್ಣಿನ ವಿವರಗಳು"; // Correct Kannada Translation
+        break;
+        case "fertiDetails":
+        element.textContent = "ರಸಗೊಬ್ಬರಗಳ ವಿವರಗಳು"; // Correct Kannada Translation
+        break;
+        default:
+        break;
+          }
+        });
+      }
+
+      // Function to toggle between Kannada and English
+
+      function translateToEnglish() {
+        const elements = document.querySelectorAll("[data-translate]");
+
+        elements.forEach((element) => {
+          const key = element.getAttribute("data-translate");
+          switch (key) {
+            case "healthyBatteryStatus":
+              element.textContent = "Healthy Battery Status ✅";
+              break;
+            case "stableVoltage":
+              element.textContent = "Stable Voltage:";
+              break;
+            case "stableVoltageDescription":
+              element.textContent =
+                "The battery maintains a stable voltage range of 13.5V – 13.8V in standby mode and 14.4V – 15.0V in cycle mode.";
+              break;
+            case "minimalSelfDischarge":
+              element.textContent = "Minimal Self-Discharge:";
+              break;
+            case "minimalSelfDischargeDescription":
+              element.textContent =
+                "The battery holds a charge for weeks/months when not in use.";
+              break;
+            case "lowHeat":
+              element.textContent = "Low Heat:";
+              break;
+            case "lowHeatDescription":
+              element.textContent =
+                "The battery remains cool during usage and charging.";
+              break;
+            case "cleanTerminals":
+              element.textContent = "Clean Terminals:";
+              break;
+            case "cleanTerminalsDescription":
+              element.textContent =
+                "Terminals are free from corrosion or rust.";
+              break;
+            case "physicalCondition":
+              element.textContent = "Physical Condition:";
+              break;
+            case "physicalConditionDescription":
+              element.textContent =
+                "No swelling, cracks, or leaks are observed in the battery casing.";
+              break;
+            case "chargingCurrent":
+              element.textContent = "Charging Current:";
+              break;
+            case "chargingCurrentDescription":
+              element.textContent =
+                "The battery draws below 0.39A during charging as per manufacturer specifications.";
+              break;
+            case "consistentPerformance":
+              element.textContent = "Consistent Performance:";
+              break;
+            case "consistentPerformanceDescription":
+              element.textContent =
+                "The battery provides consistent power output with no sudden voltage drops.";
+              break;
+            case "home":
+              element.textContent = "HOME";
+              break;
+            case "weather":
+              element.textContent = "Weather";
+              break;
+            case "precautionsTitle": // Targeting the <h2> with class "precautions-title"
+              element.textContent = "Battery Care Guidelines";
+              break;
+            case "batteryTitle": // Targeting the <h2> with class "battery-title"
+              element.textContent = "Real-Time Battery Monitoring";
+              break;
+            case "currentWeather":
+              element.textContent = "Current Weather"; // English translation for "ಪ್ರಸ್ತುತ ಹವಾಮಾನ"
+              break;
+            case "contact":
+              element.textContent = "Contact"; // English translation for "ಸಂಪರ್ಕ"
+              break;
+            case "temperature":
+              element.textContent = "Temperature"; // English translation for "ತಾಪಮಾನ"
+              break;
+            case "humidity":
+              element.textContent = "Humidity"; // English translation for "ಆರ್ದ್ರತೆ"
+              break;
+            case "condition":
+              element.textContent = "Condition"; // English translation for "ಸ್ಥಿತಿ"
+              break;
+            case "batteryStatus":
+              element.textContent = "Battery Status"; // English translation for "ಬ್ಯಾಟರಿ ಸ್ಥಿತಿ"
+              break;
+            case "voltage":
+              element.textContent = "Voltage"; // English translation for "ವೋಲ್ಟೇಜ್"
+              break;
+            case "current":
+              element.textContent = "Current"; // English translation for "ವಿದ್ಯುತ್ ಶಕ್ತಿ"
+              break;
+              case "soilDetails":
+        element.textContent = "Soil Details"; // Correct English Translation
+        break;
+        case "fertiDetails":
+        element.textContent = "Fertilizers Details"; // Correct English Translation
+        break;
+            default:
+              break;
+          }
+        });
+        function toggleLanguage() {
+          const langToggleButton = document.getElementById("languageToggle");
+          if (langToggleButton.textContent === "ಕನ್ನಡ") {
+            langToggleButton.textContent = "English";
+            translateToKannada();
+          } else {
+            langToggleButton.textContent = "ಕನ್ನಡ";
+            // Implement translateToEnglish() here if needed
+          }
+        }
+
+        // Example: You can add an event listener for a button to toggle language
+        document
+          .getElementById("languageToggle")
+          .addEventListener("click", toggleLanguage);
+      }
+    </script>
+  </body>
+</html>

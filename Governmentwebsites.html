@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+    <title>Government Websites Details | Smart AgriEV</title>
+</head>
+<style>
+    .kannada-font-size {
+        font-size: 1.2em; /* Adjust the size as needed */
+        font-weight: bold; /* Optional, to make it stand out */
+    }
+</style>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h3>Smart <span>AgriEV</span></h3>
+            </div>
+            <ul class="menu" id="site-menu">
+                <li class="nav-links" style="--1: 1">
+                    <a class="linkk" href="index.html" id="homeNav">HOME</a>
+                </li>
+                <li class="nav-links" style="--1: 3">
+                    <a class="linkk" href="contact.html" id="contactNav">Contact</a>
+                </li>
+                <li class="nav-links" style="--1: 3">
+                    <a class="linkk" href="soildetails.html" id="soilNav">Soil Details</a>
+                </li>
+                <li class="nav-links" style="--1: 4">
+                    <a class="linkk" href="fertilizers.html" id="fertilizerNav">Fertilizers Details</a>
+                </li>
+                <li class="nav-links language-toggle">
+                    <button class="language-toggle-btn" onclick="toggleLanguage()" id="languageToggle">ಕನ್ನಡ</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Government Websites Information Section -->
+    <section class="gov-websites">
+        <h1 id="websitesTitle">Useful Government Websites</h1>
+        <p id="websitesDescription">Click on the button below to visit the official government websites:</p>
+
+        <div class="website-buttons">
+            <div class="website-item">
+                <p class="website-name" id="website1">National Portal of India (Farmers Section)</p>
+                <button onclick="window.open('https://www.india.gov.in/', '_blank')" id="clickHereBtn">Click Here</button>
+            </div>
+            <div class="website-item">
+                <p class="website-name" id="website2">Indian Council of Agricultural Research (ICAR)</p>
+                <button onclick="window.open('https://www.icar.org.in/', '_blank')" id="clickHereBtn">Click Here</button>
+            </div>
+            <div class="website-item">
+                <p class="website-name" id="website3">Ministry of Agriculture and Farmers Welfare</p>
+                <button onclick="window.open('https://agricoop.nic.in/', '_blank')" id="clickHereBtn">Click Here</button>
+            </div>
+            <div class="website-item">
+                <p class="website-name" id="website4">eNAM (National Agriculture Market)</p>
+                <button onclick="window.open('https://enam.gov.in/', '_blank')" id="clickHereBtn">Click Here</button>
+            </div>
+            <div class="website-item">
+                <p class="website-name" id="website5">Pradhan Mantri Fasal Bima Yojana (PMFBY)</p>
+                <button onclick="window.open('https://pmfby.gov.in/', '_blank')" id="clickHereBtn">Click Here</button>
+            </div>
+            <div class="website-item">
+                <p class="website-name" id="website6">Soil Health Management Portal</p>
+                <button onclick="window.open('http://www.soilhealth.dac.gov.in/', '_blank')" id="clickHereBtn">Click Here</button>
+            </div>
+            <div class="website-item">
+                <p class="website-name" id="website7">Kisan Call Center</p>
+                <button onclick="window.open('https://kisan.gov.in/', '_blank')" id="clickHereBtn">Click Here</button>
+            </div>
+            <div class="website-item">
+                <p class="website-name" id="website8">National Horticulture Board (NHB)</p>
+                <button onclick="window.open('https://nhb.gov.in/', '_blank')" id="clickHereBtn">Click Here</button>
+            </div>
+            <div class="website-item">
+                <p class="website-name" id="website9">Rashtriya Krishi Vikas Yojana (RKVY)</p>
+                <button onclick="window.open('https://rkvy.nic.in/', '_blank')" id="clickHereBtn">Click Here</button>
+            </div>
+            <div class="website-item">
+                <p class="website-name" id="website10">Agri-Clinics and Agri-Business Centres Scheme (ACABC)</p>
+                <button onclick="window.open('https://www.nddb.coop/', '_blank')" id="clickHereBtn">Click Here</button>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 Smart AgriEV. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Translations for English and Kannada
+        const translations = {
+            en: {
+                languageToggle: "ಕನ್ನಡ",
+                websitesTitle: "Useful Government Websites",
+                websitesDescription: "Click on the button below to visit the official government websites:",
+                website1Title: "National Portal of India (Farmers Section)",
+                website2Title: "Indian Council of Agricultural Research (ICAR)",
+                website3Title: "Ministry of Agriculture and Farmers Welfare",
+                website4Title: "eNAM (National Agriculture Market)",
+                website5Title: "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+                website6Title: "Soil Health Management Portal",
+                website7Title: "Kisan Call Center",
+                website8Title: "National Horticulture Board (NHB)",
+                website9Title: "Rashtriya Krishi Vikas Yojana (RKVY)",
+                website10Title: "Agri-Clinics and Agri-Business Centres Scheme (ACABC)",
+                homeNav: "HOME",
+                contactNav: "Contact",
+                soilNav: "Soil Details",
+                fertilizerNav: "Fertilizers Details",
+                clickHereBtn: "Click Here"
+            },
+            kn: {
+                languageToggle: "English",
+                websitesTitle: "ಸರ್ಕಾರದ ಪ್ರಯೋಜನಕಾರಿ ವೆಬ್‌ಸೈಟ್‌ಗಳು",
+                websitesDescription: "ಆಧಿಕೃತ ಸರ್ಕಾರದ ವೆಬ್‌ಸೈಟ್‌ಗಳನ್ನು ಭೇಟಿಮಾಡಲು ಕೆಳಗಿನ ಬಟನ್ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿ:",
+                website1Title: "ಭಾರತ ಸರ್ಕಾರದ ಪೋರ್ಟಲ್ (ಕೃಷಿಕರ ವಿಭಾಗ)",
+                website2Title: "ಭಾರತೀಯ ಕೃಷಿ ಸಂಶೋಧನಾ ಮಂಡಳಿ (ICAR)",
+                website3Title: "ಕೃಷಿ ಮತ್ತು ಕೃಷಿಕರ ಕಲ್ಯಾಣ ಸಚಿವಾಲಯ",
+                website4Title: "eNAM (ರಾಷ್ಟ್ರೀಯ ಕೃಷಿ ಮಾರುಕಟ್ಟೆ)",
+                website5Title: "ಪ್ರಧಾನ ಮಂತ್ರಿ ಫಸಲ್ ಬಿಮಾ ಯೋಜನಾ (PMFBY)",
+                website6Title: "ಮಣ್ಣು ಆರೋಗ್ಯ ನಿರ್ವಹಣಾ ಪೋರ್ಟಲ್",
+                website7Title: "ಕಿಷನ್ ಕಾಲ್ ಸೆಂಟರ್",
+                website8Title: "ರಾಷ್ಟ್ರೀಯ ಹಾರ್ಟಿಕಲ್ಚರ್ ಮಂಡಳಿ (NHB)",
+                website9Title: "ರಾಷ್ಟ್ರೀಯ ಕೃಷಿ ಅಭಿವೃದ್ಧಿ ಯೋಜನೆ (RKVY)",
+                website10Title: "ಅಗ್ರಿ-ಕ್ಲಿನಿಕ್ಸ್ ಮತ್ತು ಅಗ್ರಿ-ಬಿಸಿನೆಸ್ ಸೆಂಟರ್‌ಗಳು ಯೋಜನೆ (ACABC)",
+                homeNav: "ಮುಖಪುಟ",
+                contactNav: "ಸಂಪರ್ಕಿಸಿ",
+                soilNav: "ಮಣ್ಣಿನ ವಿವರಗಳು",
+                fertilizerNav: "ರಸಗೊಬ್ಬರಗಳ ವಿವರಗಳು",
+                clickHereBtn: "ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ"
+            }
+        };
+
+        // Toggle language function
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang;
+            const newLang = currentLang === "en" ? "kn" : "en";
+            document.documentElement.lang = newLang;
+            updateText(newLang);
+        }
+
+        // Update text content based on language
+        function updateText(language) {
+            console.log("Switching to language:", language);  // Debug log for language switching
+            console.log(translations[language]);              // Debug log for translations
+
+            document.getElementById("languageToggle").textContent = translations[language].languageToggle;
+            document.getElementById("websitesTitle").textContent = translations[language].websitesTitle;
+            document.getElementById("websitesDescription").textContent = translations[language].websitesDescription;
+
+            document.getElementById("website1").textContent = translations[language].website1Title;
+            document.getElementById("website2").textContent = translations[language].website2Title;
+            document.getElementById("website3").textContent = translations[language].website3Title;
+            document.getElementById("website4").textContent = translations[language].website4Title;
+            document.getElementById("website5").textContent = translations[language].website5Title;
+            document.getElementById("website6").textContent = translations[language].website6Title;
+            document.getElementById("website7").textContent = translations[language].website7Title;
+            document.getElementById("website8").textContent = translations[language].website8Title;
+            document.getElementById("website9").textContent = translations[language].website9Title;
+            document.getElementById("website10").textContent = translations[language].website10Title;
+
+            document.getElementById("homeNav").textContent = translations[language].homeNav;
+            document.getElementById("contactNav").textContent = translations[language].contactNav;
+            document.getElementById("soilNav").textContent = translations[language].soilNav;
+            document.getElementById("fertilizerNav").textContent = translations[language].fertilizerNav;
+
+            const clickHereBtns = document.querySelectorAll("button#clickHereBtn");
+            clickHereBtns.forEach(button => {
+                button.textContent = translations[language].clickHereBtn;
+            });
+            document.getElementById("languageToggle").textContent = translations[language].languageToggle;
+            document.getElementById("websitesTitle").textContent = translations[language].websitesTitle;
+            document.getElementById("websitesDescription").textContent = translations[language].websitesDescription;
+
+            const websiteElements = [
+                document.getElementById("website1"),
+                document.getElementById("website2"),
+                document.getElementById("website3"),
+                document.getElementById("website4"),
+                document.getElementById("website5"),
+                document.getElementById("website6"),
+                document.getElementById("website7"),
+                document.getElementById("website8"),
+                document.getElementById("website9"),
+                document.getElementById("website10")
+            ];
+
+            // Apply translations and toggle Kannada-specific font size
+            websiteElements.forEach((website, index) => {
+                website.textContent = translations[language][`website${index + 1}Title`];
+
+                // Add Kannada-specific styling if language is Kannada
+                if (language === "kn") {
+                    website.style.fontSize = "1.2em"; // Adjust size for Kannada
+                    website.style.fontWeight = "bold"; // Optional for emphasis
+                } else {
+                    website.style.fontSize = ""; // Reset to default
+                    website.style.fontWeight = ""; // Reset to default
+                }
+            });
+
+            document.getElementById("homeNav").textContent = translations[language].homeNav;
+            document.getElementById("contactNav").textContent = translations[language].contactNav;
+            document.getElementById("soilNav").textContent = translations[language].soilNav;
+            document.getElementById("fertilizerNav").textContent = translations[language].fertilizerNav;
+
+            // Update button text without redeclaring variable
+            const buttons = document.querySelectorAll("button#clickHereBtn");
+            buttons.forEach(button => {
+                button.textContent = translations[language].clickHereBtn;
+            });
+        }
+
+        // Initialize with English
+        document.documentElement.lang = "en";
+        updateText("en");
+    </script>
+</body>
+
+</html>

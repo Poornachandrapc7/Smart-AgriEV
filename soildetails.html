@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script_text.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Chakra+Petch&family=Poppins&family=Young+Serif&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6a50e0837f.js" crossorigin="anonymous"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Soil Details | Smart AgriEV</title>
+    <style>
+        .tts-controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .tts-controls button {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            color: white;
+            margin: 5px; /* Add spacing between buttons */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .tts-controls button.play {
+            background-color: #4CAF50; /* Green */
+        }
+
+        .tts-controls button.play:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .tts-controls button.pause {
+            background-color: #FF9800; /* Orange */
+        }
+
+        .tts-controls button.pause:hover {
+            background-color: #fb8c00; /* Darker orange on hover */
+        }
+
+        .tts-controls button.resume {
+            background-color: #2196F3; /* Blue */
+        }
+
+        .tts-controls button.resume:hover {
+            background-color: #1976D2; /* Darker blue on hover */
+        }
+
+        .tts-controls button.stop {
+            background-color: #F44336; /* Red */
+        }
+
+        .tts-controls button.stop:hover {
+            background-color: #d32f2f; /* Darker red on hover */
+        }
+        /* Style for Listen in Kannada button */
+        .listen-btn {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px; /* Add spacing between buttons */
+            margin-bottom: 10px; /* Add vertical spacing */
+        }
+
+        .listen-btn:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        /* Style for Pause button */
+        .pause-btn {
+            background-color: #FF9800; /* Orange */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px; /* Add spacing between buttons */
+            margin-bottom: 10px; /* Add vertical spacing */
+        }
+
+        .pause-btn:hover {
+            background-color: #fb8c00; /* Darker orange on hover */
+        }
+
+        /* Style for Resume button */
+        .resume-btn {
+            background-color: #2196F3; /* Blue */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px; /* Add spacing between buttons */
+            margin-bottom: 10px; /* Add vertical spacing */
+        }
+
+        .resume-btn:hover {
+            background-color: #1976D2; /* Darker blue on hover */
+        }
+
+        /* Style for Stop button */
+        .stop-btn {
+            background-color: #F44336; /* Red */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px; /* Add vertical spacing */
+        }
+
+        .stop-btn:hover {
+            background-color: #d32f2f; /* Darker red on hover */
+        }
+        .tts-controls-hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h3>Smart <span>AgriEV</span></h3>
+            </div>
+            <ul class="menu" id="site-menu">
+                <li class="nav-links" style="--1:1">
+                    <a class="linkk" href="index.html" data-translate="home">HOME</a>
+                </li>
+                <li class="nav-links" style="--1:3">
+                    <a class="linkk" href="contact.html" data-translate="contact">Contact</a>
+                </li>
+                <li class="nav-links" style="--1:4">
+                    <a class="linkk" href="fertilizers.html" data-translate="fertiDetails">Fetilizers Details</a>
+                </li>
+                <li class="nav-links" style="--1:4">
+                    <a class="linkk" href="Governmentwebsites.html" data-translate="webDetails">Government Websites</a>
+                </li>
+                <li class="nav-links language-toggle">
+                    <button class="language-toggle-btn" onclick="toggleLanguage()" id="languageToggle" data-translate="languageToggle">ಕನ್ನಡ</button>
+                </li>
+            </ul>
+            <i class="fa-solid fa-bars togg" onclick="openmenu()"></i>
+            <i class="fa-regular fa-circle-xmark" onclick="closemenu()"></i>
+        </nav>
+    </header>
+
+    <!-- Soil Details Section -->
+    <section class="soil-details-section">
+        <div class="soil-details-container">
+            <h2 class="soil-details-title" data-translate="soilDetails" style="text-align: center; font-size: 24px; font-weight: bold; color: #27ae60; margin-bottom: 20px;">Soil Details</h2>
+
+            <div class="soil-image-container">
+                <img src="soil_image.jpg" alt="Soil Image" class="soil-image">
+            </div>
+            <div class="tts-controls" id="tts-controls">
+                <button class="voice-btn play" onclick="startReading()">🔊 Play</button>
+                <button class="voice-btn pause" onclick="pauseReading()">⏸️ Pause</button>
+                <button class="voice-btn resume" onclick="resumeReading()">▶️ Resume</button>
+                <button class="voice-btn stop" onclick="stopReading()">⏹️ Stop</button>
+              </div>
+            <div class="soil-info" data-translate="soilInfo">
+                <p><strong class="soil-name">Red Soil :</strong> Red soil, rich in iron oxide, derives its name from its reddish hue. Found predominantly in southern and eastern India, it covers regions such as Tamil Nadu, Andhra Pradesh, Karnataka, Odisha, and the Chhota Nagpur Plateau. While red soil is generally low in nutrients like nitrogen, phosphorus, and humus, it is porous and retains moisture well, making it suitable for specific crops. Key crops include millets, groundnuts, cotton, pulses, and tobacco. During the Kharif season, rice and millets are commonly grown, while in Rabi season, wheat and oilseeds thrive. Proper irrigation and fertilization enhance its productivity.</p>
+                <p><strong class="soil-name">Black Soil :</strong> Black soil, also known as regur soil, is rich in clay and moisture-retaining capacity. Predominantly found in the Deccan Plateau regions of Maharashtra, Madhya Pradesh, Gujarat, Andhra Pradesh, and Karnataka, it is ideal for cotton cultivation, earning it the name “Black Cotton Soil.” It is highly fertile due to its richness in lime, iron, magnesium, and alumina but has low nitrogen and phosphorus content. Key crops include cotton, sugarcane, wheat, jowar, and oilseeds. In the Kharif season, crops like cotton and millets thrive, while in the Rabi season, wheat and pulses are commonly grown. Proper irrigation enhances its agricultural potential.</p>
+                <p><strong class="soil-name">Alluvial Soil :</strong> Laterite soil, rich in iron and aluminum, forms in regions with high rainfall and temperature. Found in Karnataka, Kerala, Tamil Nadu, Odisha, Maharashtra, and the northeastern states, it is suitable for crops like tea, coffee, cashew, and rubber. Although it has low fertility due to leaching, proper irrigation and fertilization enhance productivity. This soil is widely used for plantation crops in both Kharif and Rabi seasons. During Kharif, crops like rice and millets can be grown, while in Rabi, pulses and oilseeds are common. Its porosity helps in moisture retention for long-term crops.</p>
+                <p><strong class="soil-name">Laterite Soil :</strong> Laterite soil, rich in iron and aluminum, forms in regions with high rainfall and temperature. Found in Karnataka, Kerala, Tamil Nadu, Odisha, Maharashtra, and the northeastern states, it is suitable for crops like tea, coffee, cashew, and rubber. Although it has low fertility due to leaching, proper irrigation and fertilization enhance productivity. This soil is widely used for plantation crops in both Kharif and Rabi seasons. During Kharif, crops like rice and millets can be grown, while in Rabi, pulses and oilseeds are common. Its porosity helps in moisture retention for long-term crops.</p>
+                <p><strong class="soil-name">Desert Soil :</strong> Desert soil, sandy and low in organic matter, is found in arid and semi-arid regions. Predominantly located in Rajasthan, Gujarat, Haryana, and Punjab, it has poor water retention but high mineral content, especially salt and phosphate. With proper irrigation, it supports crops like bajra, barley, maize, and pulses. In the Kharif season, millet and maize are commonly grown, while in the Rabi season, wheat and mustard thrive. This soil is suitable for drought-resistant and hardy crops, and modern irrigation techniques like drip irrigation enhance its productivity.</p>
+                <p><strong class="soil-name">Mountain soil :</strong> Mountain soil, formed in hilly and mountainous areas, is rich in organic matter and well-drained. Found in regions like the Himalayan ranges, Western Ghats, and the Nilgiri Hills, this soil is acidic and rich in humus, making it suitable for specific crops. It supports crops such as tea, coffee, fruits like apples and peaches, and spices like cardamom. In the Kharif season, crops like rice and maize are grown, while in the Rabi season, wheat and barley are cultivated. The soil’s ability to retain moisture is enhanced by the surrounding vegetation, supporting the growth of high-altitude crops.</p>
+                <p><strong class="soil-name">Mixed red and black soil :</strong> Mixed red and black soil is a combination of the characteristics of both red and black soils, making it highly fertile and versatile for a wide range of crops. Found in regions like Maharashtra, Karnataka, Andhra Pradesh, and Madhya Pradesh, it is rich in iron, lime, and magnesium but also retains moisture well. It is suitable for both dry and irrigated conditions, supporting crops like cotton, groundnut, soybean, sorghum, and pulses. In the Kharif season, crops like cotton and groundnut are grown, while in the Rabi season, wheat and chickpeas thrive. Proper irrigation and crop rotation improve soil health and enhance productivity.</p>
+                <p><strong class="soil-name">Grey and brown soil :</strong> Grey and brown soil is typically found in areas with moderate rainfall and is often located in the Deccan Plateau, parts of the Western Ghats, and parts of Odisha and Assam. This soil is moderately fertile, with a good amount of clay and organic matter, though it can sometimes have poor drainage. It is suitable for a variety of crops, including rice, maize, barley, groundnut, and pulses. In the Kharif season, crops like rice and maize are grown, while in the Rabi season, wheat, barley, and pulses are common. Proper irrigation and soil management practices help to improve its fertility and overall crop yield.</p>
+        </div>
+    </section>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 Smart AgriEV. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Define translations for English and Kannada
+        const translations = {
+            en: {
+                home: "HOME",
+                contact: "Contact",
+                weather: "Weather",
+                languageToggle: "ಕನ್ನಡ",
+                soilDetails: "Soil Details",
+                fertiDetails: "Fertilizers Details",
+                webDetails: "Government websites",
+                soilInfo: `
+                <p><strong class="soil-name">Red Soil :</strong> Red soil, rich in iron oxide, derives its name from its reddish hue. Found predominantly in southern and eastern India, it covers regions such as Tamil Nadu, Andhra Pradesh, Karnataka, Odisha, and the Chhota Nagpur Plateau. While red soil is generally low in nutrients like nitrogen, phosphorus, and humus, it is porous and retains moisture well, making it suitable for specific crops. Key crops include millets, groundnuts, cotton, pulses, and tobacco. During the Kharif season, rice and millets are commonly grown, while in Rabi season, wheat and oilseeds thrive. Proper irrigation and fertilization enhance its productivity.</p>
+                <p><strong class="soil-name">Black Soil :</strong> Black soil, also known as regur soil, is rich in clay and moisture-retaining capacity. Predominantly found in the Deccan Plateau regions of Maharashtra, Madhya Pradesh, Gujarat, Andhra Pradesh, and Karnataka, it is ideal for cotton cultivation, earning it the name “Black Cotton Soil.” It is highly fertile due to its richness in lime, iron, magnesium, and alumina but has low nitrogen and phosphorus content. Key crops include cotton, sugarcane, wheat, jowar, and oilseeds. In the Kharif season, crops like cotton and millets thrive, while in the Rabi season, wheat and pulses are commonly grown. Proper irrigation enhances its agricultural potential.</p>
+                <p><strong class="soil-name">Alluvial Soil :</strong> Alluvial soil, formed by the deposition of silt by rivers, is one of the most fertile soils in India. Found extensively in the northern plains of Punjab, Haryana, Uttar Pradesh, Bihar, and West Bengal, as well as in the delta regions of Odisha and Tamil Nadu, it is ideal for agriculture. Rich in potash and lime but low in nitrogen, it supports diverse crops. Key crops include rice, wheat, sugarcane, and oilseeds. During the Kharif season, crops like rice and maize are grown, while in the Rabi season, wheat and pulses thrive. Proper irrigation and crop rotation maximize productivity.</p>
+                <p><strong class="soil-name">Laterite Soil :</strong> Laterite soil, rich in iron and aluminum, forms in regions with high rainfall and temperature. Found in Karnataka, Kerala, Tamil Nadu, Odisha, Maharashtra, and the northeastern states, it is suitable for crops like tea, coffee, cashew, and rubber. Although it has low fertility due to leaching, proper irrigation and fertilization enhance productivity. This soil is widely used for plantation crops in both Kharif and Rabi seasons. During Kharif, crops like rice and millets can be grown, while in Rabi, pulses and oilseeds are common. Its porosity helps in moisture retention for long-term crops.</p>
+                <p><strong class="soil-name">Desert Soil :</strong> Desert soil, sandy and low in organic matter, is found in arid and semi-arid regions. Predominantly located in Rajasthan, Gujarat, Haryana, and Punjab, it has poor water retention but high mineral content, especially salt and phosphate. With proper irrigation, it supports crops like bajra, barley, maize, and pulses. In the Kharif season, millet and maize are commonly grown, while in the Rabi season, wheat and mustard thrive. This soil is suitable for drought-resistant and hardy crops, and modern irrigation techniques like drip irrigation enhance its productivity.</p>
+                <p><strong class="soil-name">Mountain soil :</strong> Mountain soil, formed in hilly and mountainous areas, is rich in organic matter and well-drained. Found in regions like the Himalayan ranges, Western Ghats, and the Nilgiri Hills, this soil is acidic and rich in humus, making it suitable for specific crops. It supports crops such as tea, coffee, fruits like apples and peaches, and spices like cardamom. In the Kharif season, crops like rice and maize are grown, while in the Rabi season, wheat and barley are cultivated. The soil’s ability to retain moisture is enhanced by the surrounding vegetation, supporting the growth of high-altitude crops.</p>
+                <p><strong class="soil-name">Mixed red and black soil :</strong> Mixed red and black soil is a combination of the characteristics of both red and black soils, making it highly fertile and versatile for a wide range of crops. Found in regions like Maharashtra, Karnataka, Andhra Pradesh, and Madhya Pradesh, it is rich in iron, lime, and magnesium but also retains moisture well. It is suitable for both dry and irrigated conditions, supporting crops like cotton, groundnut, soybean, sorghum, and pulses. In the Kharif season, crops like cotton and groundnut are grown, while in the Rabi season, wheat and chickpeas thrive. Proper irrigation and crop rotation improve soil health and enhance productivity.</p>
+                <p><strong class="soil-name">Grey and brown soil :</strong> Grey and brown soil is typically found in areas with moderate rainfall and is often located in the Deccan Plateau, parts of the Western Ghats, and parts of Odisha and Assam. This soil is moderately fertile, with a good amount of clay and organic matter, though it can sometimes have poor drainage. It is suitable for a variety of crops, including rice, maize, barley, groundnut, and pulses. In the Kharif season, crops like rice and maize are grown, while in the Rabi season, wheat, barley, and pulses are common. Proper irrigation and soil management practices help to improve its fertility and overall crop yield.</p>
+                `
+            },
+            kn: {
+                home: "ಮುಖಪುಟ",
+                contact: "ಸಂಪರ್ಕಿಸಿ",
+                weather: "ಹವಾಮಾನ",
+                languageToggle: "English",
+                soilDetails: "ಮಣ್ಣಿನ ವಿವರಗಳು",
+                fertiDetails: "ರಸಗೊಬ್ಬರಗಳ ವಿವರಗಳು",
+                webDetails: "ಸರ್ಕಾರಿ ವೆಬ್ ಸೈಟ್ ಗಳು",
+                soilInfo: `
+                <p><strong class="soil-name">ಕೆಂಪು ಮಣ್ಣು :</strong> ಕೆಂಪು ಮಣ್ಣು, ಅದರ ಕೆಂಪು ಬಣ್ಣಕ್ಕಾಗಿ ಪ್ರಖ್ಯಾತವಾಗಿದ್ದು, ದತ್ತಿಯ ತಾಕಿದ ಲೋಹಾಕ್ಸೈಡಿನಿಂದ ಉಂಟಾಗುತ್ತದೆ. ದಕ್ಷಿಣ ಮತ್ತು ಪೂರ್ವ ಭಾರತದಲ್ಲಿ ಹೆಚ್ಚಿನ ಭಾಗದಲ್ಲಿ ಕಂಡುಬರುತ್ತದೆ; ಇದರಲ್ಲಿ ತಮಿಳುನಾಡು, ಆಂಧ್ರ ಪ್ರದೇಶ, ಕರ್ನಾಟಕ, ಒಡಿಶಾ ಮತ್ತು ಛೋಟಾ ನಾಗ್ಪುರ ಪೀಠಭೂಮಿ ಒಳಗೊಂಡಿವೆ. ಕೆಂಪು ಮಣ್ಣು ಸಾಮಾನ್ಯವಾಗಿ ನೈಟ್ರೋಜನ್, ಫಾಸ್ಫರಸ್ ಮತ್ತು ಹುಮ್ಮಸಿನಂತಹ ಪೋಷಕಾಂಶಗಳಲ್ಲಿ ಕಡಿಮೆ ಇರುತ್ತದೆ, ಆದರೆ ಇದು ರಂಧ್ರಯುಕ್ತವಾಗಿದ್ದು, ತೇವವನ್ನು ಚೆನ್ನಾಗಿ ಹಿಡಿದುಕೊಳ್ಳುತ್ತದೆ, ಇದು ಕೆಲವು ನಿರ್ದಿಷ್ಟ ಬೆಳೆಗಳಿಗೆ ಸೂಕ್ತವಾಗಿಸುತ್ತದೆ. ಮುಖ್ಯ ಬೆಳೆಗಳಲ್ಲಿ ಜೋಳ, ಕಡಲೆ, ಹತ್ತಿ, ಪಪ್ಪಾಯಿ ಮತ್ತು ಹೊಗೆಯಿಳಿ ಸೇರಿವೆ. ಖರೀಫ್ ಹಂಗಾಮಿನಲ್ಲಿ ಅಕ್ಕಿ ಮತ್ತು ಜೋಳ ಸಾಮಾನ್ಯವಾಗಿ ಬೆಳೆಯಲಾಗುತ್ತದೆ, ರಬಿ ಹಂಗಾಮಿನಲ್ಲಿ ಗೋಧಿ ಮತ್ತು ಎಣ್ಣೆ ಬೀಜಗಳು ಚೆನ್ನಾಗಿ ಬೆಳೆಯುತ್ತವೆ. ಸಮರ್ಪಕ ನೀರಾವರಿ ಮತ್ತು ಗೊಬ್ಬರದ ಬಳಕೆ ಉತ್ಪಾದಕತೆಯನ್ನು ಹೆಚ್ಚಿಸುತ್ತದೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio1')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio1')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio1')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio1')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio1" src="/red_soil.mp3"></audio>
+
+                <p><strong class="soil-name">ಕಪ್ಪು ಮಣ್ಣು :</strong> ಕಪ್ಪು ಮಣ್ಣು, ರೆಗರ್ ಮಣ್ಣು ಎಂದು ಕೂಡ ಕರೆಯಲಾಗುತ್ತದೆ, ಕ್ಲೇ ಮತ್ತು ತೇವವನ್ನು ಹಿಡಿದಿಡುವ ಸಾಮರ್ಥ್ಯದಲ್ಲಿ ಶ್ರೀಮಂತವಾಗಿದೆ. ಮಹಾರಾಷ್ಟ್ರ, ಮಧ್ಯ ಪ್ರದೇಶ, ಗುಜರಾತ್, ಆಂಧ್ರ ಪ್ರದೇಶ ಮತ್ತು ಕರ್ನಾಟಕದ ಡೆಕ್ಕನ್ ಪೀಠಭೂಮಿ ಪ್ರದೇಶಗಳಲ್ಲಿ ಹೆಚ್ಚು ಕಂಡುಬರುತ್ತದೆ, ಇದು ಹತ್ತಿ ಕೃಷಿಗೆ ಆದರ್ಶವಾಗಿದ್ದು, "ಕಪ್ಪು ಹತ್ತಿ ಮಣ್ಣು" ಎಂಬ ಹೆಸರನ್ನು ಗಳಿಸಿದೆ. ಇದು ಚೂನಾ, ಕಬ್ಬಿಣ, ಮ್ಯಾಗ್ನೀಷಿಯಮ್ ಮತ್ತು ಅಲ್ಯೂಮಿನಾದಲ್ಲಿ ಶ್ರೀಮಂತವಾಗಿದ್ದು, ನೈಟ್ರೋಜನ್ ಮತ್ತು ಫಾಸ್ಫರಸ್ ವಿಷಯದಲ್ಲಿ ಕಡಿಮೆ ಪ್ರಮಾಣವನ್ನು ಹೊಂದಿದೆ. ಮುಖ್ಯ ಬೆಳೆಗಳಲ್ಲಿ ಹತ್ತಿ, ಸಕ್ಕರೆ ಕಬ್ಬು, ಗೋಧಿ, ಜೋಳ ಮತ್ತು ಎಣ್ಣೆ ಬೀಜಗಳು ಸೇರಿವೆ. ಖರೀಫ್ ಹಂಗಾಮಿನಲ್ಲಿ ಹತ್ತಿ ಮತ್ತು ಜೋಳ ಉತ್ತಮವಾಗಿ ಬೆಳೆಯುತ್ತವೆ, ರಬಿ ಹಂಗಾಮಿನಲ್ಲಿ ಗೋಧಿ ಮತ್ತು ಪಪ್ಪಾಯಿಗಳನ್ನು ಸಾಮಾನ್ಯವಾಗಿ ಬೆಳೆಯಲಾಗುತ್ತದೆ. ಸಮರ್ಪಕ ನೀರಾವರಿ ಕೃಷಿ ಸಾಮರ್ಥ್ಯವನ್ನು ಹೆಚ್ಚಿಸುತ್ತದೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio2')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio2')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio2')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio2')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio2" src="/black_soil.mp3"></audio>
+
+                <p><strong class="soil-name">ಅಲುವಿಯಲ್ ಮಣ್ಣು :</strong> ಅಲ್ಯೂವಿಯಲ್ ಮಣ್ಣು, ನದಿಗಳಿಂದ ಸಿಲ್ಟ್ ಠೇವಣಿಯಿಂದ ಉಂಟಾಗಿದ್ದು, ಭಾರತದಲ್ಲಿ ಅತ್ಯಂತ ಸಸ್ಯೋತ್ಪಾದಕ ಮಣ್ಣಾಗಿದ್ದು, ಕೃಷಿಗೆ ಅತ್ಯಂತ ಸೂಕ್ತವಾಗಿದೆ. ಪಂಜಾಬ್, ಹರಿಯಾಣ, ಉತ್ತರ ಪ್ರದೇಶ, ಬಿಹಾರ, ಪಶ್ಚಿಮ ಬಂಗಾಳದ ಉತ್ತರ ಸಮತಟ ಪ್ರದೇಶಗಳಲ್ಲಿ ಮತ್ತು ಒಡಿಶಾ ಮತ್ತು ತಮಿಳುನಾಡಿನ ಡೆಲ್ಟಾ ಪ್ರದೇಶಗಳಲ್ಲಿ ವ್ಯಾಪಕವಾಗಿ ಕಂಡುಬರುತ್ತದೆ. ಇದು ಪೋಟಾಶ್ ಮತ್ತು ಚೂನಾದಲ್ಲಿ ಶ್ರೀಮಂತವಾಗಿದೆ ಆದರೆ ನೈಟ್ರೋಜನ್ ವಿಷಯದಲ್ಲಿ ಕಡಿಮೆ ಹೊಂದಿದೆ. ಮುಖ್ಯ ಬೆಳೆಗಳಲ್ಲಿ ಅಕ್ಕಿ, ಗೋಧಿ, ಸಕ್ಕರೆಕಬ್ಬು ಮತ್ತು ಎಣ್ಣೆ ಬೀಜಗಳು ಸೇರಿವೆ. ಖರೀಫ್ ಹಂಗಾಮಿನಲ್ಲಿ ಅಕ್ಕಿ ಮತ್ತು ಮೆಕ್ಕೆಜೋಳವನ್ನು ಬೆಳೆಯಲಾಗುತ್ತದೆ, ರಬಿ ಹಂಗಾಮಿನಲ್ಲಿ ಗೋಧಿ ಮತ್ತು ಪಪ್ಪಾಯಿಗಳು ಉತ್ತಮವಾಗಿ ಬೆಳೆಯುತ್ತವೆ. ಸಮರ್ಪಕ ನೀರಾವರಿ ಮತ್ತು ಬೆಳೆ ಪರಿವರ್ತನೆ ಉತ್ಪಾದಕತೆಯನ್ನು ಗಟ್ಟಿಯಾಗಿ ಹೆಚ್ಚಿಸುತ್ತದೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio3')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio3')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio3')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio3')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio3" src="/alu_soil.mp3"></audio>
+
+                <p><strong class="soil-name">ಲೆಟರೈಟ್ ಮಣ್ಣು :</strong> ಲೆಟರೈಟ್ ಮಣ್ಣು, ಲೋಹ ಮತ್ತು ಅಲ್ಯೂಮಿನಿಯಂನಲ್ಲಿ ಶ್ರೀಮಂತವಾಗಿದ್ದು, ಹೆಚ್ಚಿನ ಮಳೆಯ ಮತ್ತು ಉಷ್ಣಪ್ರದೇಶಗಳಲ್ಲಿ ರೂಪುಗೊಂಡಿರುತ್ತದೆ. ಕರ್ನಾಟಕ, ಕೇರಳ, ತಮಿಳುನಾಡು, ಒಡಿಶಾ, ಮಹಾರಾಷ್ಟ್ರ ಮತ್ತು ಈಶಾನ್ಯ ರಾಜ್ಯಗಳಲ್ಲಿ ಕಂಡುಬರುವ ಈ ಮಣ್ಣು, ಟೀ, ಕಾಫಿ, ಗೋಡಂಬಿ ಮತ್ತು ರಬ್ಬರ್ ಬೆಳೆಗಳಿಗೆ ಸೂಕ್ತವಾಗಿದೆ. ಲೀಚಿಂಗ್‌ನ ಕಾರಣದಿಂದ ಇದು ಕಡಿಮೆ ಸಸ್ಯೋತ್ಪಾದಕತೆಯನ್ನು ಹೊಂದಿರುವುದರಿಂದ, ಸಮರ್ಪಕ ನೀರಾವರಿ ಮತ್ತು ಗೊಬ್ಬರದ ಬಳಕೆ ಉತ್ಪಾದಕತೆಯನ್ನು ಹೆಚ್ಚಿಸುತ್ತದೆ. ಖರೀಫ್ ಮತ್ತು ರಬಿ ಹಂಗಾಮುಗಳಲ್ಲಿ ತೋಟ ಬೆಳೆಗಳಿಗಾಗಿ ವ್ಯಾಪಕವಾಗಿ ಬಳಸಲಾಗುತ್ತದೆ. ಖರೀಫ್ ಹಂಗಾಮಿನಲ್ಲಿ ಅಕ್ಕಿ ಮತ್ತು ಜೋಳವನ್ನು ಬೆಳೆಸಬಹುದು, ರಬಿ ಹಂಗಾಮಿನಲ್ಲಿ ಪಪ್ಪಾಯಿ ಮತ್ತು ಎಣ್ಣೆ ಬೀಜಗಳು ಸಾಮಾನ್ಯವಾಗಿ ಬೆಳೆಯಲಾಗುತ್ತದೆ. ಇದರ ರಂಧ್ರತೆಯಿಂದ ದೀರ್ಘಾವಧಿಯ ಬೆಳೆಗಳಿಗೆ ತೇವವನ್ನು ಹಿಡಿದುಕೊಳ್ಳಲು ನೆರವಾಗುತ್ತದೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio4')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio4')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio4')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio4')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio4" src="/lev_soil.mp3"></audio>
+
+                <p><strong class="soil-name">ಮರಳು ಮಣ್ಣು :</strong> ಮರುಭೂಮಿ ಮಣ್ಣು, ಮಣ್ಣಿನ ಕಣಗಳು ಕಡಿಮೆ ಜೈವಿಕ ವಿಷಯವನ್ನು ಹೊಂದಿರುವ ಬೂದಿ ಮತ್ತು ಮರಳುಸ್ವರೂಪದ ಮಣ್ಣಾಗಿದೆ. ಈ ಮಣ್ಣು ಮುಖ್ಯವಾಗಿ ರಾಜಸ್ಥಾನ, ಗುಜರಾತ್, ಹರಿಯಾಣ ಮತ್ತು ಪಂಜಾಬ್‌ನ ಶುಷ್ಕ ಮತ್ತು ಅರ್ಧ ಶುಷ್ಕ ಪ್ರದೇಶಗಳಲ್ಲಿ ಕಂಡುಬರುತ್ತದೆ. ಇದರ ನೀರನ್ನು ಹಿಡಿದಿಡುವ ಸಾಮರ್ಥ್ಯ ಕಡಿಮೆಯಾಗಿದೆ, ಆದರೆ ಉಪ್ಪು ಮತ್ತು ಫಾಸ್ಫೇಟ್‌ನಂತಹ ಖನಿಜಾಂಶಗಳಲ್ಲಿ ಶ್ರೀಮಂತವಾಗಿದೆ. ಸಮರ್ಪಕ ನೀರಾವರಿಯ ಮೂಲಕ, ಇದು ಜೋಳ, ಗೋಧಿ, ಮೆಕ್ಕೆಜೋಳ ಮತ್ತು ಪಪ್ಪಾಯಿಗಳಂತಹ ಬೆಳೆಗಳನ್ನು ಬೆಳೆಸಲು ಅನುಕೂಲಕರವಾಗಿದೆ. ಖರೀಫ್ ಹಂಗಾಮಿನಲ್ಲಿ ಜೋಳ ಮತ್ತು ಮೆಕ್ಕೆಜೋಳ ಬೆಳೆಯಲಾಗುತ್ತದೆ,  ರಬಿ ಹಂಗಾಮಿನಲ್ಲಿ ಗೋಧಿ ಮತ್ತು ಸಾಸಿವೆ ಉತ್ತಮವಾಗಿ ಬೆಳೆಯುತ್ತವೆ. ಈ ಮಣ್ಣು ಬಿರುಗಾಳು-ನಿರೋಧಕ ಮತ್ತು ಕಠಿಣ ಬೆಳೆಗಳಿಗೆ ಸೂಕ್ತವಾಗಿದೆ, ಮತ್ತು ಡ್ರಿಪ್ ನೀರಾವರಿ ತಂತ್ರಜ್ಞಾನಗಳು ಉತ್ಪಾದಕತೆಯನ್ನು ಹೆಚ್ಚಿಸುತ್ತವೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio5')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio5')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio5')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio5')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio5" src="/des_soil.mp3"></audio>
+
+                <p><strong class="soil-name">ಪರ್ವತ ಮಣ್ಣು :</strong> ಪರ್ವತ ಮಣ್ಣು, ಹಳ್ಳಿಗಳ ಮತ್ತು ಪರ್ವತ ಪ್ರದೇಶಗಳಲ್ಲಿ ರೂಪುಗೊಂಡಿರುವ ಮಣ್ಣು, ಜೈವಿಕ ವಿಷಯದಲ್ಲಿ ಶ್ರೀಮಂತವಾಗಿದ್ದು, ಉತ್ತಮವಾಗಿ ನೀರಾವರಿ ಮತ್ತು ನಿಕಾಸ ಹೊಂದಿದೆ. ಹಿಮಾಲಯ ಪರ್ವತಶ್ರೇಣಿಗಳು, ಪಶ್ಚಿಮ ಘಟ್ಟಗಳು ಮತ್ತು ನಿಲಗಿರಿ ಬೆಟ್ಟಗಳು ಹೀಗೆ ಇರುವ ಈ ಮಣ್ಣು ಎಸಿಡಿಕ್ ಹಾಗೂ ಹುಮ್ಮಸಿನಲ್ಲಿಋಚಿಯಾಗಿದ್ದು, ನಿರ್ದಿಷ್ಟ ಬೆಳೆಗಳಿಗೆ ಸೂಕ್ತವಾಗಿದೆ. ಈ ಮಣ್ಣು ಟೀ, ಕಾಫಿ, ಸೇಬು ಮತ್ತು ಆಲುಗೊಮ್ಮಲುಹಣ್ಣುಗಳು, ಹಲ್ಲುಮೆಣಸು, ಕೇಸರಿ ಇತ್ಯಾದಿ ಬೆಳೆಗಳನ್ನು ಬೆಳೆಸಲು ಸಹಾಯಕವಾಗಿದೆ. ಖರೀಫ್ ಹಂಗಾಮಿನಲ್ಲಿ ಅಕ್ಕಿ ಮತ್ತು ಮೆಕ್ಕೆಜೋಳ ಬೆಳೆಸಲಾಗುತ್ತದೆ, ರಬಿ ಹಂಗಾಮಿನಲ್ಲಿ ಗೋಧಿ ಮತ್ತು ಜೋಳ ಬೆಳೆಯಲಾಗುತ್ತದೆ. ಈ ಮಣ್ಣಿನ ತೇವವನ್ನು ಹಿಡಿದಿಡುವ ಸಾಮರ್ಥ್ಯವು ಸುತ್ತಮುತ್ತಲಿನ ಸಸ್ಯಗಳಿಂದ ಉತ್ತೇಜನ ಪಡೆದಿದೆ, ಇದು ಉನ್ನತ ಉಚ್ಚತೆಯ ಬೆಳೆಗಳ ಬೆಳವಣಿಗೆಗೆ ನೆರವಾಗುತ್ತದೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio6')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio6')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio6')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio6')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio6" src="/mou_soil.mp3"></audio>
+
+                <p><strong class="soil-name">ಮಿಶ್ರ ಕೆಂಪು ಮತ್ತು ಕಪ್ಪು ಮಣ್ಣು :</strong> ಮಿಶ್ರ ಕೆಂಪು ಮತ್ತು ಕಪ್ಪು ಮಣ್ಣು, ಕೆಂಪು ಮತ್ತು ಕಪ್ಪು ಮಣ್ಣಿನ ಲಕ್ಷಣಗಳ ಸಂಯೋಜನೆಯಾಗಿದ್ದು, ಇದು ಬಹುತೇಕ ಬೆಳೆಗಳಿಗಾಗಿ ಅತ್ಯಂತ ಸಸ್ಯೋತ್ಪಾದಕ ಮತ್ತು ವೈವಿಧ್ಯಮಯವಾಗಿದೆ. ಮಹಾರಾಷ್ಟ್ರ, ಕರ್ನಾಟಕ, ಆಂಧ್ರ ಪ್ರದೇಶ ಮತ್ತು ಮಧ್ಯ ಪ್ರದೇಶದಲ್ಲಿ ಕಂಡುಬರುವ ಈ ಮಣ್ಣು ಲೋಹ, ಚೂನ ಮತ್ತು ಮ್ಯಾಗ್ನೀಷಿಯಮ್‌ನಲ್ಲಿ ಶ್ರೀಮಂತವಾಗಿದ್ದು, ತೇವವನ್ನು ಚೆನ್ನಾಗಿ ಹಿಡಿದಿಡುತ್ತದೆ. ಇದು ಒಕ್ಕಲ, ಕಡಲೆ, ಸೋಯಾಬಿನ್, ಜೋಳ ಮತ್ತು ಪಪ್ಪಾಯಿಗಳಂತಹ ಬೆಳೆಗಳನ್ನು ಬೆಳೆಸಲು ಸೂಕ್ತವಾಗಿದೆ. ಖರೀಫ್ ಹಂಗಾಮಿನಲ್ಲಿ ಹತ್ತಿ ಮತ್ತು ಕಡಲೆ ಬೆಳೆಯಲಾಗುತ್ತದೆ, ರಬಿ ಹಂಗಾಮಿನಲ್ಲಿ ಗೋಧಿ ಮತ್ತು ಕಡಲೆ ಉತ್ತಮವಾಗಿ ಬೆಳೆಯುತ್ತವೆ. ಸಮರ್ಪಕ ನೀರಾವರಿ ಮತ್ತು ಬೆಳೆ ಪರಿವರ್ತನೆ ಮಣ್ಣಿನ ಆರೋಗ್ಯವನ್ನು ಉತ್ತಮಪಡಿಸಿ ಉತ್ಪಾದಕತೆಯನ್ನು ಹೆಚ್ಚಿಸುತ್ತದೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio7')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio7')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio7')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio7')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio7" src="/red_black_soil.mp3"></audio>
+
+                <p><strong class="soil-name">ಬೂದು ಮತ್ತು ಬೂದುಹಣ್ಣಿನ ಮಣ್ಣು :</strong> ಬೂದು ಮತ್ತು ಬೂದುಹಣ್ಣಿನ ಮಣ್ಣು ಸಾಮಾನ್ಯವಾಗಿ ಮಾಧ್ಯಮ ಮಳೆಯುಳ್ಳ ಪ್ರದೇಶಗಳಲ್ಲಿ ಕಂಡುಬರುತ್ತದೆ ಮತ್ತು ಡೆಕ್ಕನ್ ಪೀಠಭೂಮಿಯ, ಪಶ್ಚಿಮ ಘಟ್ಟಗಳ ಭಾಗಗಳು, ಒಡಿಶಾ ಮತ್ತು ಅಸ್ಸಾಂ ಭಾಗಗಳಲ್ಲಿ ವ್ಯಾಪಕವಾಗಿದೆ. ಈ ಮಣ್ಣು ಸರಾಸರಿ ಉತ್ಪಾದಕತೆಯಾಗಿದೆ, ಇದರಲ್ಲಿ ಉತ್ತಮ ಪ್ರಮಾಣದಲ್ಲಿ ಮಣ್ಣಿನ ಕಣಗಳು ಮತ್ತು ಜೈವಿಕ ವಿಷಯವಿದ್ದು, ಕೆಲವು ಸಂದರ್ಭಗಳಲ್ಲಿ ಕೊಲಚೆ ನೀರೂ ಅರಿವಿನಲ್ಲಿ ಸಮಸ್ಯೆಗಳು ಉಂಟಾಗಬಹುದು. ಇದು ಅಕ್ಕಿ, ಮೆಕ್ಕೆಜೋಳ, ಜೋಳ, ಕಡಲೆ ಮತ್ತು ಪಪ್ಪಾಯಿ ಗಳು ಸೇರಿದಂತೆ ವಿವಿಧ ಬೆಳೆಗಳನ್ನು ಬೆಳೆಸಲು ಸೂಕ್ತವಾಗಿದೆ. ಖರೀಫ್ ಹಂಗಾಮಿನಲ್ಲಿ ಅಕ್ಕಿ ಮತ್ತು ಮೆಕ್ಕೆಜೋಳವನ್ನು ಬೆಳೆಸಲಾಗುತ್ತದೆ, ರಬಿ ಹಂಗಾಮಿನಲ್ಲಿ ಗೋಧಿ, ಜೋಳ ಮತ್ತು ಪಪ್ಪಾಯಿಗಳನ್ನು ಸಾಮಾನ್ಯವಾಗಿ ಬೆಳೆಸಲಾಗುತ್ತದೆ. ಸಮರ್ಪಕ ನೀರಾವರಿ ಮತ್ತು ಮಣ್ಣು ನಿರ್ವಹಣೆಯ ಕ್ರಮಗಳು ಅದರ ಉತ್ಪಾದಕತೆಯನ್ನು ಸುಧಾರಿಸಲು ನೆರವಾಗುತ್ತವೆ.</p>
+                <button class="listen-btn" onclick="playAudio('audio8')">ಕನ್ನಡದಲ್ಲಿ ಕೇಳಿ</button>
+                <button class="pause-btn" onclick="pauseAudio('audio8')">ನಿಲ್ಲಿಸು</button>
+                <button class="resume-btn" onclick="resumeAudio('audio8')">ಪುನಃ ಪ್ರಾರಂಭಿಸು</button>
+                <button class="stop-btn" onclick="stopAudio('audio8')">ಕೊನೆಗೊಳಿಸು</button>
+                <audio id="audio8" src="/gray_soil.mp3"></audio>
+                `
+            }
+        };
+
+
+ // Initialize speech variable globally only once
+        var speech = speech || new SpeechSynthesisUtterance();
+        let isPaused = false;
+        let voices = [];
+
+        // Load voices and log them to console
+        window.speechSynthesis.onvoiceschanged = function() {
+            voices = window.speechSynthesis.getVoices();
+            console.log(voices);  // Log available voices to see if Kannada is available
+        };
+
+        // Function to toggle language
+        function toggleLanguage() {
+            const lang = document.getElementById("languageToggle").innerText === "ಕನ್ನಡ" ? "kn" : "en";
+
+            document.querySelectorAll("[data-translate]").forEach((el) => {
+                const key = el.getAttribute("data-translate");
+                if (key === "soilInfo") {
+                    el.innerHTML = translations[lang][key];
+                } else {
+                    el.innerText = translations[lang][key];
+                }
+            });
+            // Hide or show the TTS buttons based on language
+            const ttsControls = document.getElementById("tts-controls");
+            if (lang === "kn") {
+                ttsControls.classList.add("tts-controls-hidden");
+            } else {
+                ttsControls.classList.remove("tts-controls-hidden");
+            }
+        }
+        // Start reading function
+        function startReading() {
+            const language = document.getElementById("languageToggle").innerText === "ಕನ್ನಡ" ? "kn-IN" : "en-IN";
+            const soilInfoElement = document.querySelector(".soil-info");
+            const soilText = soilInfoElement.innerText;
+
+            speech.text = soilText;
+            speech.lang = language;
+            speech.rate = 1;
+            speech.pitch = 1;
+            isPaused = false;
+
+            // Stop any existing speech before starting a new one
+            window.speechSynthesis.cancel();
+
+            // Check if Kannada voice is available, otherwise fallback to English
+            const selectedVoice = voices.find(voice => voice.lang === 'kn-IN') || voices.find(voice => voice.lang === 'en-IN');
+            speech.voice = selectedVoice;
+
+            window.speechSynthesis.speak(speech);
+        }
+
+        // Pause reading function
+        function pauseReading() {
+            if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+                isPaused = true;
+                window.speechSynthesis.pause();
+            }
+        }
+
+        // Resume reading function
+        function resumeReading() {
+            if (isPaused) {
+                window.speechSynthesis.resume();
+            }
+        }
+
+        // Stop reading function
+        function stopReading() {
+            window.speechSynthesis.cancel();
+        }
+        function playAudio(id) {
+    document.getElementById(id).play();
+  }
+
+  function pauseAudio(id) {
+    document.getElementById(id).pause();
+  }
+
+  function resumeAudio(id) {
+    document.getElementById(id).play();
+  }
+
+  function stopAudio(id) {
+    const audio = document.getElementById(id);
+    audio.pause();
+    audio.currentTime = 0;
+  }
+    </script>
+</body>
+</html>

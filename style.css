@@ -1,0 +1,510 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: #081b29;
+}
+.header {
+    padding: 20px 10%;
+    background-color: #03426f;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.logo {
+    color: #fff;
+    font-size: 35px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    opacity: 0;
+    animation: slideright 1s ease forwards;
+}
+@keyframes slideright {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+span {
+    color: #0ef;
+}
+.nav-links {
+    display: inline-block;
+    margin: 10px 20px;
+    opacity: 0;
+    animation: slidetop 1s ease forwards;
+    animation-delay: calc(.2s * var(--1));
+}
+.linkk {
+    color: #fff;
+    font-size: 20px;
+    position: relative;
+}
+@keyframes slidetop {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+.linkk::after {
+    content: "";
+    width: 0;
+    height: 3px;
+    background: #0ef;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+    border-radius: 100px;
+}
+.linkk:hover::after {
+    width: 100%;
+}
+.navbar i {
+    display: none;
+    cursor: pointer;
+}
+
+/* Ensure all nav links have the same font size */
+.nav-links a {
+    font-size: 20px; /* Match the font size of .linkk */
+}
+
+/* Ensure hover effect applies to all nav links */
+.nav-links a:hover {
+    color: #0ef; /* This can help show color change when hovered */
+}
+
+/* Optional: Specifically target the "Soil Details" link if needed */
+.nav-links a.soil-link {
+    font-size: 20px; /* Ensure this specific link also has the same font size */
+}
+
+
+
+/* Home/Battery Monitoring Section */
+.home {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 70px 5%;
+}
+.home-container {
+    text-align: center;
+    background-color: #081b29;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1200px;
+    color: #fff;
+}
+.home-container h2 {
+    margin-bottom: 20px;
+}
+.dashboard {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.card {
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+.card:hover {
+    transform: translateY(-10px);
+}
+.card h2 {
+    margin-top: 0;
+}
+.card p {
+    font-size: 1.2em;
+}
+.bar-container {
+    width: 100%;
+    height: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+.bar {
+    height: 100%;
+    background-color: #0ef;
+    width: 0;
+    border-radius: 10px;
+    transition: width 1s ease-in-out;
+}
+/* Add this at the end of your CSS */
+.check-status-btn {
+    background-color: #0ef;
+    color: #03426f;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.check-status-btn:hover {
+    background-color: #0c7f89;
+    transform: scale(1.05);
+}
+
+/* Language Toggle Button */
+.language-toggle-btn {
+    background-color: #0ef; /* Matches the bright cyan on progress bars */
+    color: #03426f; /* Dark blue text color */
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.language-toggle-btn:hover {
+    background-color: #0c7f89; /* Slightly darker cyan on hover */
+    transform: scale(1.05); /* Subtle zoom effect */
+}
+
+
+/* Healthy Status */
+.healthy {
+    background-color: #1f8f4e;
+    box-shadow: 0 4px 8px rgba(31, 143, 78, 0.5);
+}
+.healthy .subheading {
+    color: #000; /* Black color for subheadings */
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Maintenance Needed */
+.maintenance {
+    background-color: #b43d3d;
+    box-shadow: 0 4px 8px rgba(180, 61, 61, 0.5);
+}
+.maintenance .subheading {
+    color: #000; /* Black color for subheadings */
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Weather Section */
+.weather {
+    padding: 20px;
+    background-color: #092335;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.weather-container h2 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.weather-info p {
+    font-size: 18px;
+    color: #b3c1c9;
+    margin: 8px 0;
+    background-color: #03426f;
+    padding: 10px 15px;
+    border-radius: 6px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.weather-info p strong {
+    color: #0ef;
+}
+
+/* Precautions Section */
+.precautions {
+    padding: 20px;
+    background-color: #092335;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.precautions-container {
+    padding: 20px;
+}
+#healthyPrecautions, #maintenancePrecautions {
+    margin-top: 20px;
+    display: none; /* Hidden by default */
+}
+/* Healthy Precautions */
+#healthyPrecautions li {
+    border-left: 5px solid #27ae60;
+    background: #768a8f;
+    color: #333;
+    margin: 10px 0;
+    padding: 10px 15px;
+    font-size: 16px;
+    line-height: 1.5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.bold-subheading {
+    font-weight: bold;
+    color: darkgreen;  /* Changed color to dark green */
+}
+/* Maintenance Precautions */
+#maintenancePrecautions li {
+    border-left: 5px solid #e74c3c;
+    background: #ecf0f1;
+    color: #333;
+    margin: 10px 0;
+    padding: 10px 15px;
+    font-size: 16px;
+    line-height: 1.5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .precautions {
+        padding: 10px;
+    }
+    li {
+        font-size: 14px;
+    }
+}
+
+/* Contact Section Styles */
+.contact {
+    padding: 50px 10%;
+    background-color: #092335;
+    text-align: center;
+}
+.contact-container {
+    background-color: #081b29;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.contact-container h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.contact-container p {
+    font-size: 18px;
+    color: #b3c1c9;
+    margin-bottom: 30px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: #03426f;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+}
+textarea {
+    resize: vertical;
+    height: 150px;
+}
+.submit-btn {
+    background-color: #0ef;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.submit-btn:hover {
+    background-color: #0c7f89;
+}
+
+/* Footer Section Styles */
+.footer {
+    background-color: #03426f;
+    padding: 20px 10%;
+    text-align: center;
+    color: #fff;
+    margin-top: 50px;
+}
+
+/* Soil Details Section */
+.soil-details-section {
+    padding: 20px;
+    background-color: #092335;
+    margin: 0;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.soil-details-container {
+    padding: 20px;
+}
+
+.soil-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #27ae60;
+    margin-bottom: 20px;
+}
+
+.soil-image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.soil-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.soil-info p {
+    border-left: 5px solid #27ae60;
+    background: #b9cfd4;
+    color: #333;
+    margin: 10px 0;
+    padding: 10px 15px;
+    font-size: 16px;
+    line-height: 1.5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.soil-info strong {
+    font-weight: bold;
+}
+
+.soil-info .soil-name {
+    color: #27ae60; /* This will color the soil name green */
+    font-weight: bold;
+}
+
+.bold-subheading {
+    font-weight: bold;
+    color: darkgreen; /* Adjusted color for subheadings */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .soil-details-section {
+        padding: 10px;
+    }
+    .soil-info p {
+        font-size: 14px;
+    }
+    .soil-image {
+        max-width: 100%;
+    }
+}
+
+/* Government Websites Section */
+.gov-websites {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.website-buttons {
+    display: flex;
+    flex-direction: column;  /* Stack items vertically */
+    align-items: center;     /* Center the items horizontally */
+    gap: 20px;               /* Add space between each item */
+    margin-top: 20px;
+}
+
+.website-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;  /* Align text to left for the website name */
+    justify-content: center; /* Center items horizontally */
+}
+
+.website-item h3 {
+    font-size: 1.5rem;
+    margin: 0; /* Remove any default margin */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:focus {
+    outline: none;
+}
+
+
+
