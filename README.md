@@ -1,5 +1,9 @@
 # Smart Agri EV
 
+To use the Smart AgriEV website, visit ([https://amazon-clone-pc7.netlify.app/](https://smartagriev.netlify.app/)) and explore its features
+
+# Overview
+
 Smart Agri EV is a website designed to seamlessly integrate electric vehicle (EV) technology into the agricultural sector. This platform aims to empower farmers with modern solutions by providing tools, data, and insights tailored for agricultural applications.
 
 # Features
@@ -36,22 +40,10 @@ git clone https://github.com/your-username/smart-agriev.git
 
 cd smart-agriev
 
-# Contribution Guidelines
+# Contributing
+We welcome contributions to further improve the Amazon Frontend Clone. If you have any ideas, bug reports, or feature requests, feel free to submit a pull request or open an issue.
 
-We welcome contributions! Please follow these steps:
+# Contact
+For any questions or support, please contact us at (mailto:poornachandrapc777@gmail.com).
 
-Fork the repository.
-
-Create a new branch for your feature or bug fix.
-
-git checkout -b feature-name
-
-Commit your changes with a clear message.
-
-git commit -m "Add feature name"
-
-Push the branch to your forked repository.
-
-git push origin feature-name
-
-Open a pull request to the main repository.
+Thank you for visiting the Amazon Frontend Clone!
